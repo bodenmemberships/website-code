@@ -185,6 +185,7 @@ CMS_TEMPLATES = (
     ('2column.html', '2 Column Page'),
     ('3column.html', '3 Column Page'),
 )
+CMS_TEMPLATE_DEFAULT = 'page.html'
 
 CMS_PERMISSION = True
 

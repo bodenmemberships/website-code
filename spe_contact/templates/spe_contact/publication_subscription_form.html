@@ -1,0 +1,33 @@
+{% csrf_token %}
+<form id="ajaxquery" method="POST" class="post-form">
+    <p><label for="id_customer_id">Customer id:</label> <input id="id_customer_id" maxlength="12" name="customer_id" type="text" /></p>
+    <p><label for="id_publication">Publication:</label> <select id="id_publication" name="publication">
+        <option value="" selected="selected">---------</option>
+        <option value="HSE">HSE: HSE Now</option>
+        <option value="JPT">JPT: Journal of Petroleum Technology</option>
+        <option value="OGF">OGF: Oil and Gas Facilities</option>
+        <option value="TWA">TWA: The Way Ahead</option>
+        <option value="WWW">WWW: Online</option>
+        </select></p>
+    <p><label for="id_email">Email:</label> <input id="id_email" maxlength="254" name="email" type="email" /></p>
+    <button type="submit" class="save btn btn-default">Subscribe</button>
+</form>
+
+<div id="success"></div>
+
+    {% addtoblock "js" %}
+        <script>
+        $(document).ready(function() {
+            $("#ajaxquery").submit(function(event) {
+                /* stop form from submitting normally */
+                event.preventDefault();
+                /* serialize the forms data for sending */
+                var formdata = $(this).serialize();
+                $.post( "{% url 'publication_submit' %}", formdata, function( data ) {
+                    // Act upon the data returned, setting it to #success
+                    $("#success").html ( data );
+                });
+            });
+        });
+        </script>
+    {% endaddtoblock %}

@@ -1,9 +1,10 @@
-{% extends "base.html" %}
-{% load cms_tags %}
+{% extends "www_base.html" %}
+{% load cms_tags sekizai_tags %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
-{% block content %}
+{% block cms_content %}
+    <a href="{% url 'publication_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     <h3>Testing the context</h3>
     <hr>
     <h4>variables</h4>
@@ -40,6 +41,12 @@
 {#    is_superuser {{ visitor.is_superuser }}#}
 {#    is_active {{ visitor.is_active }}#}
 
+<h4>Active Users:</h4>
+{% load request_tag %}
+{% active_users in 10 minutes as user_list %}
+{% for user in user_list %}
+    {{ user.username }}
+{% endfor %}
 
     {% placeholder "content" %}
-{% endblock content %}
+{% endblock cms_content %}

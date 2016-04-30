@@ -1,0 +1,35 @@
+{% load i18n %}
+<div class="row padZero margZero">
+{% for article in articles %}
+        <article class="col-sm-12 tile-textbelow story{% if not article.published %} unpublished{% endif %}{% if article.future %} future{% endif %}">
+        <a href="{{ article.get_absolute_url }}">
+            <div class="story-wrap">
+                {% if article.picture and article.picture.url %}
+                    <figure class="thumb">
+{#                        <div class="img-wrap detailImgWrapFull"><img src="{{ article.picture.url }}" class="detailArticleImage"/></div>#}
+                        <div class="img-wrap detailImgWrapFull" style="background-image: url({{ article.picture.url }})"></div>
+                    </figure>
+                {% endif %}
+                <div class="story-text">
+                    <span class="pub-date">{{ article.date|date:"d F Y" }}
+                        {% if article.is_readable == True %}{# check if the article is locked or not and indicate #}
+                            | <span class="sideListLock" data-toggle="tooltip" data-placement="bottom" title="Article is free to view">&nbsp;<i class="fa fa-unlock"></i></span>
+                        {% endif %}
+                        </span>
+                    <h3>{{ article.title }}</h3>
+                    {% if article.sponsored %}
+                    <p><span class="sponsored">SPONSORED</span></p>
+                    {% endif %}
+                    <p>{{ article.teaser }}</p>
+                </div>
+            </div>
+        </a>
+        </article>
+{% empty %}
+    <p class="well">{% trans "No items available" %}</p>
+{% endfor %}
+
+{% if show_all_url and show_all_text %}
+            <div class="row"><div class="col-xs-12 see-all-div"><a class="see-all" id="features" href="{{ show_all_url }}">{{ show_all_text }}<span></span><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a></div></div>
+{% endif %}
+</div>

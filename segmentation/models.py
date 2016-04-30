@@ -16,7 +16,6 @@ from cms.models import CMSPlugin
 #
 @python_2_unicode_compatible
 class SegmentLimitPluginModel(CMSPlugin):
-
     #
     # Need to consider how best to display this in the Plugin Change Form...
     #
@@ -27,17 +26,17 @@ class SegmentLimitPluginModel(CMSPlugin):
     #
 
     label = models.CharField(_('label'),
-        blank=True,
-        default='',
-        help_text=_('Optionally set a label for this limit block.'),
-        max_length=128,
-    )
+                             blank=True,
+                             default='',
+                             help_text=_('Optionally set a label for this limit block.'),
+                             max_length=128,
+                             )
 
     max_children = models.PositiveIntegerField(_('# of matches to display'),
-        blank=False,
-        default=1,
-        help_text=_('Display up to how many matching segments?'),
-    )
+                                               blank=False,
+                                               default=1,
+                                               help_text=_('Display up to how many matching segments?'),
+                                               )
 
     @property
     def configuration_string(self):
@@ -48,12 +47,11 @@ class SegmentLimitPluginModel(CMSPlugin):
         else:
             return string_concat(_('Show First'), ' ', self.max_children)
 
-
     def __str__(self):
-        '''
+        """
         If there is a label, show that with the configuration in brackets,
         otherwise, just return the configuration string.
-        '''
+        """
 
         if self.label:
             conf_str = _('{label} [{config}]').format(
@@ -68,7 +66,6 @@ class SegmentLimitPluginModel(CMSPlugin):
 
 @python_2_unicode_compatible
 class SegmentBasePluginModel(CMSPlugin):
-    
     #
     # Defines a common interface for segment plugins. Also note that plugin
     # model's subclassing this class will automatically be (un-)registered
@@ -80,15 +77,14 @@ class SegmentBasePluginModel(CMSPlugin):
         abstract = True
 
     label = models.CharField(_('label'),
-        blank=True,
-        default='',
-        max_length=128,
-    )
-
+                             blank=True,
+                             default='',
+                             max_length=128,
+                             )
 
     @property
     def configuration_string(self):
-        '''
+        """
         Return a ugettext_lazy object (or a lazy function that returns the
         same) that represents the configuration for the plugin instance in a
         unique, concise manner that is suitable for a toolbar menu option.
@@ -133,15 +129,14 @@ class SegmentBasePluginModel(CMSPlugin):
 
 
         NOTE: Each subclass must override to suit.
-        '''
+        """
         raise NotImplementedError("Please Implement this method")
 
-
     def __str__(self):
-        '''
+        """
         If there is a label, show that with the configuration in brackets,
         otherwise, just return the configuration string.
-        '''
+        """
 
         if self.label:
             conf_str = _('{label} [{config}]').format(
@@ -155,18 +150,16 @@ class SegmentBasePluginModel(CMSPlugin):
 
 
 class FallbackSegmentPluginModel(SegmentBasePluginModel):
-
     @property
     def configuration_string(self):
         return _('Always active')
 
 
 class SwitchSegmentPluginModel(SegmentBasePluginModel):
-
     on_off = models.BooleanField(_('Always on?'),
-        default=True,
-        help_text=_('Uncheck to always hide child plugins.'),
-    )
+                                 default=True,
+                                 help_text=_('Uncheck to always hide child plugins.'),
+                                 )
 
     @property
     def configuration_string(self):
@@ -177,7 +170,6 @@ class SwitchSegmentPluginModel(SegmentBasePluginModel):
 
 
 class CookieSegmentPluginModel(SegmentBasePluginModel):
-
     #
     # Consider that we should probably support either:
     #   Simple wildcard '*', '?' expressions or
@@ -195,22 +187,21 @@ class CookieSegmentPluginModel(SegmentBasePluginModel):
     #
 
     cookie_key = models.CharField(_('name of cookie'),
-        blank=False,
-        default='',
-        help_text=_('Name of cookie to consider.'),
-        max_length=4096,
-    )
+                                  blank=False,
+                                  default='',
+                                  help_text=_('Name of cookie to consider.'),
+                                  max_length=4096,
+                                  )
 
     cookie_value = models.CharField(_('value to compare'),
-        blank=False,
-        default='',
-        help_text=_('Value to consider.'),
-        max_length=4096,
-    )
+                                    blank=False,
+                                    default='',
+                                    help_text=_('Value to consider.'),
+                                    max_length=4096,
+                                    )
 
     @property
     def configuration_string(self):
-
         def wrapper():
             return _('“{key}” equals “{value}”').format(key=self.cookie_key, value=self.cookie_value)
 
@@ -220,14 +211,88 @@ class CookieSegmentPluginModel(SegmentBasePluginModel):
         )()
 
 
-class AuthenticatedSegmentPluginModel(SegmentBasePluginModel):
+class VariableSegmentPluginModel(SegmentBasePluginModel):
+    variable_key = models.CharField(_('name of variable'),
+                                    blank=False,
+                                    help_text=_('Name of variable to check.'),
+                                    max_length=500,
+                                    )
+    variable_value = models.CharField(_('value to compare'),
+                                      blank=False,
+                                      help_text=_('Value to consider.'),
+                                      max_length=500,
+                                      )
 
+    @property
+    def configuration_string(self):
+        def wrapper():
+            return _('“{key}” equals “{value}”').format(key=self.variable_key, value=self.variable_value)
+
+        return lazy(
+            wrapper,
+            six.text_type
+        )()
+
+
+class VisitorSegmentPluginModel(SegmentBasePluginModel):
+    visitor_key = models.CharField(_('name of customer attribute'),
+                                   blank=False,
+                                   help_text=_('Name of customer attribute to check.'),
+                                   max_length=500,
+                                   )
+    visitor_value = models.CharField(_('value to compare'),
+                                     blank=False,
+                                     help_text=_('Value to consider.'),
+                                     max_length=500,
+                                     )
+
+    @property
+    def configuration_string(self):
+        def wrapper():
+            return _('“{key}” equals “{value}”').format(key=self.visitor_key, value=self.visitor_value)
+
+        return lazy(
+            wrapper,
+            six.text_type
+        )()
+
+
+class VisitorClassificationSegmentPluginModel(SegmentBasePluginModel):
+    # DISCIPLINES = (
+    #     ('D&C', 'Drilling and Completions'),
+    #     ('HSE', 'Health, Safety, Security, Environment & Social Responsibility'),
+    #     ('M&I', 'Management & Information'),
+    #     ('P&O', 'Production & Operations'),
+    #     ('PFC', 'Projects, Facilities & Construciton'),
+    #     ('RDD', 'Reservoir Description & Dynamics'),
+    #     ('UND', 'Undeclared'),
+    # )
+    # TODO: Add choices by query
+    classification_code = models.CharField(max_length=20) # , choices=DISCIPLINES)
+
+    # @property
+    # def configuration_string(self):
+    #     txt = 'Matches ' + self.discipline
+    #     return _(txt)
+    @property
+    def configuration_string(self):
+        def wrapper():
+            return _('Classification code equals “{value}”').format(value=self.classification_code)
+
+        return lazy(
+            wrapper,
+            six.text_type
+        )()
+
+
+class AuthenticatedSegmentPluginModel(SegmentBasePluginModel):
     @property
     def configuration_string(self):
         return _('is Authenticated')
 
+
 class DisciplineSegmentPluginModel(SegmentBasePluginModel):
-    DISCIPLINES =(
+    DISCIPLINES = (
         ('D&C', 'Drilling and Completions'),
         ('HSE', 'Health, Safety, Security, Environment & Social Responsibility'),
         ('M&I', 'Management & Information'),
@@ -236,7 +301,7 @@ class DisciplineSegmentPluginModel(SegmentBasePluginModel):
         ('RDD', 'Reservoir Description & Dynamics'),
         ('UND', 'Undeclared'),
     )
-    discipline = models.CharField(max_length = 4, choices=DISCIPLINES)
+    discipline = models.CharField(max_length=4, choices=DISCIPLINES)
 
     # @property
     # def configuration_string(self):
@@ -244,7 +309,6 @@ class DisciplineSegmentPluginModel(SegmentBasePluginModel):
     #     return _(txt)
     @property
     def configuration_string(self):
-
         def wrapper():
             return _('Discipline equals “{value}”').format(value=self.discipline)
 
@@ -253,9 +317,9 @@ class DisciplineSegmentPluginModel(SegmentBasePluginModel):
             six.text_type
         )()
 
-class CountrySegmentPluginModel(SegmentBasePluginModel):
 
-    #class Meta:
+class CountrySegmentPluginModel(SegmentBasePluginModel):
+    # class Meta:
     #    app_label = 'country_segment'
 
     #
@@ -535,23 +599,22 @@ class CountrySegmentPluginModel(SegmentBasePluginModel):
     # We prepend the country code to the country name string for the field
     # choices.
     #
-    COUNTRY_CODES_CHOICES = [ (code, _('{code}: {name}').format(
-            code=code, name=name
-        )) for (code, name) in COUNTRY_CODES ]
+    COUNTRY_CODES_CHOICES = [(code, _('{code}: {name}').format(
+        code=code, name=name
+    )) for (code, name) in COUNTRY_CODES]
 
     # This is so we can perform look-ups too.
     country_code_names = dict(COUNTRY_CODES)
 
     country_code = models.CharField(_('country'),
-        blank=False,
-        choices=COUNTRY_CODES_CHOICES,
-        default='O1',  # 'Other Country'
-        max_length=2,
-    )
+                                    blank=False,
+                                    choices=COUNTRY_CODES_CHOICES,
+                                    default='O1',  # 'Other Country'
+                                    max_length=2,
+                                    )
 
     @property
     def configuration_string(self):
-
         def wrapper():
             return _('{name} ({code})').format(
                 name=self.country_code_names[self.country_code],
@@ -563,12 +626,13 @@ class CountrySegmentPluginModel(SegmentBasePluginModel):
             six.text_type
         )()
 
+
 @python_2_unicode_compatible
 class Segment(models.Model):
-    '''
+    """
     This is a hollow, unmanaged model that simply allows us to attach custom
     admin views into the AdminSite.
-    '''
+    """
 
     class Meta:
         managed = False

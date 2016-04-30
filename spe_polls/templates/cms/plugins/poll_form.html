@@ -1,0 +1,30 @@
+{% load i18n %}
+{% block poll_header %}
+    <h1>{{ poll.question }}</h1>
+{% endblock poll_header %}
+{% block form_tag %}
+    <form method="POST" action="{% url "polls:vote" %}">
+{% endblock form_tag %}
+    {% csrf_token %}
+    <input type="hidden" name="poll" value="{{ poll.id }}"/>
+    <input type="hidden" name="next" value="{{ request.path }}"/>
+    {% for choice in poll.choice_set.iterator %}
+    {% with choice.id as id %}
+      {% block choice %}
+        <div class="radiogroup row">
+            <div class="col-xs-1 col-xs-offset-1"><input type="radio" name="choice" value="{{ id }}" id="choice-{{ id }}"></div>
+            <div class="col-xs-9"><label for="choice-{{ id }}">{{ choice.text }}</label></div>
+        </div>
+      {% endblock %}
+    {% endwith %}
+    {% endfor %}
+{% block form_submit %}
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <button type="submit" class="btn btn-default">{% trans "Vote" %}</button>
+        </div>
+    </div>
+{% endblock form_submit %}
+{% block form_tag_close %}
+        </form>
+{% endblock form_tag_close %}

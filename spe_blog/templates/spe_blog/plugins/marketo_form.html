@@ -1,0 +1,29 @@
+{% load i18n cms_tags sekizai_tags %}
+
+<div class="marketoForm">
+{{ instructions }}
+
+<script src="//app-sj05.marketo.com/js/forms2/js/forms2.min.js"></script>
+<form id="mktoForm_{{ marketo_form }}"></form>
+<script type="text/javascript">
+    MktoForms2.loadForm("//app-sj05.marketo.com", "833-LLT-087", {{ marketo_form }}, function (form) {
+        //Add an onSuccess handler
+        form.onSuccess(function (values, followUpUrl) {
+            //get the form's jQuery element and hide it
+            form.getFormElem().hide();
+ 
+            //CODE HERE TO SHOW YOUR THANK YOU MESSAGE
+            document.getElementById("thankyouDiv").style.display = "inline";
+ 
+            //return false to prevent the submission handler from taking the lead to the follow up url.
+            return false;
+           
+        });
+    });
+</script>
+</div>
+   
+<div id="thankyouDiv" style="display:none;">{{ thank_you }}</div>
+ 
+
+

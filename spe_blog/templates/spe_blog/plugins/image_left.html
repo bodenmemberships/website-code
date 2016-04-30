@@ -1,29 +1,37 @@
 {% load i18n %}
 
 {% for article in articles %}
-{#    {% if instance.hide_featured and not article.is_featured %}#}
-    <article class="tile white story{% if not article.published %} unpublished{% endif %}{% if article.future %} future{% endif %}"
+    <article class="tile whiteback story{% if not article.published %} unpublished{% endif %}{% if article.future %} future{% endif %}"
                 style="min-height: 150px">
-    <a href="{{ article.get_absolute_url }}" target="_blank">
-        <div class="story-wrap">
+    <a href="{{ article.get_absolute_url }}">
+        <div class="story-wrap row">
             {% if article.picture and article.picture.url %}
-                <figure class="thumb" style="max-width:200px;">
-                    <div class="img-wrap"><img src="{{ article.picture.url }}" style="max-height:150px;max-width: 200px"/></div>
+                <figure class="thumb col-sm-6">
+{#                    <div class="img-wrap"><img src="{{ article.picture.url }}" class="img-responsive"/></div>#}
+                    <div class="img-wrap detailImgWrapLeft" style="background-image: url({{ article.picture.url }})"></div>
                 </figure>
+                <div class="col-sm-6">
+            {% else %}
+                <div class="col-sm-12">
             {% endif %}
-            <div class="story-text">
-                <span class="pub-date">{{ article.date }}</span>
+                <span class="pub-date">{{ article.date|date:"d F Y" }}
+                {% if article.is_readable == True %}{# check if the article is locked or not and indicate #}
+                    | <span class="sideListLock" data-toggle="tooltip" data-placement="bottom" title="Article is free to view">&nbsp;<i class="fa fa-unlock"></i></span>
+                {% endif %}
+                </span>
                 <h3>{{ article.title }}</h3>
+                {% if article.sponsored %}
+                <p><span class="sponsored">SPONSORED</span></p>
+                {% endif %}
                 <p>{{ article.teaser }}</p>
             </div>
         </div>
     </a>
     </article>
-{#    {% endif %}#}
 {% empty %}
     <p class="well">{% trans "No items available" %}</p>
 {% endfor %}
 
 {% if show_all_url and show_all_text %}
-    <a class="see-all" id="features" href="{{ show_all_url }}">{{ show_all_text }}<span></span></a>
+            <div class="row"><div class="col-xs-12 see-all-div"><a class="see-all" id="features" href="{{ show_all_url }}">{{ show_all_text }}<span></span><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a></div></div>
 {% endif %}

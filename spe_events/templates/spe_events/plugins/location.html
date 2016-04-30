@@ -1,0 +1,33 @@
+{% load cms_tags sekizai_tags %}
+
+<div class="eventsNearYou">
+    <p class="locCurrent">Near to: <span class="locName">{{ location.city }}, {{ location.country_name }}</span></p>
+{% for event in events %}
+    <p class="eachEvent">
+        <a href="{{ event.url }}" class="eventName">Event: {{ event.name }}</a><br>
+        <span class="eventDetails">
+            <span class="eventType">{{ event.type }}</span><br>
+            in {{ event.location }}<br>
+{#            {% set datebegins  %}#}
+            <span id="dateBegin" class="date">{{ event.dt_begins }}</span> - <span id="dateEnd" class="date">{{ event.dt_ends }}</span>
+        </span>
+    </p>
+{% endfor %}
+</div>
+{#{{ value|date:'Y-m-d H:i' }}#}
+
+{% addtoblock "js" %}
+    <script type="text/javascript" charset="utf-8">
+        $( document ).ready(function() {
+            $('.date').each(function() {
+                var dateFormat = $(this).text();
+                var d = new Date(dateFormat);
+                var curr_date = d.getDate();
+                var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var curr_month = month[d.getMonth()];
+                var curr_year = d.getFullYear();
+                $(this).text(curr_month+" "+curr_date+", "+curr_year);
+            });
+        });
+    </script>
+{%  endaddtoblock %}

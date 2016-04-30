@@ -1,0 +1,12 @@
+{% load menu_tags i18n %}
+
+<div>
+    <p><strong>{{ title }}</strong></p>
+    <p></p>
+<ul>
+    {% block breadcrumb %}
+{#    {% show_breadcrumb %}#}
+    {% endblock %}
+</ul>
+</div>
+

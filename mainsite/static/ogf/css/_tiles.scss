@@ -1,0 +1,510 @@
+/* =================================================================== */
+/* TILES & BOXES
+====================================================================== */
+@import 'vars';
+
+.tiletitlehr {
+  margin-top:           0;
+  height:               5px;
+  border:               none;
+  color:                $col-hrblue;
+  background-color:     $col-hrblue;
+}
+.tiletitles {
+  color:                $col-copygrey;
+  font-size:            25px;
+  border-bottom:        1px dotted $col-basegrey;
+  padding-bottom:       10px;
+  margin-bottom:        15px;
+}
+.tileDate {
+  font-weight:          $font-bold;
+  margin-bottom:        10px;
+}
+.tileText {
+  color:                $col-ogfblack;
+  &:hover {
+    color:              $col-ogfblack;
+  }
+}
+.tile, .tile-blue, .tile-white, .tile-alert, .tile-poll, .eventsNearYou {
+  //box-shadow:           0 1px 2px $col-boxshadow;
+  margin-bottom:        10px;
+  padding:              15px;
+  min-width:            150px;
+}
+.tile-alert {
+  background-color:     $col-red;
+  color:                $col-white;
+
+  p {
+    margin:             0;
+  }
+}
+.tile-blue {
+  background-color:     $col-speblue;
+  color:                $col-textblue;
+
+  a {
+    color:              $col-textblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+}
+.tile-lightblue {
+  background-color:     $col-textblue;
+  color:                $col-speblue;
+
+  a {
+    color:              $col-speblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+}
+
+.tileImgBack {
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.whiteback, .tile-white {
+  background-color:     $col-white;
+}
+.link-box, .tile-links {
+  border-top: 4px solid $col-hrblue;
+  background-color:     $col-white;
+
+  ul {
+    margin:             0;
+    list-style:         disc outside;
+    padding:            0;
+
+    & > :first-child {
+      border-top:       1px solid $col-ogflightgrey;
+      padding-top:      10px;
+    }
+
+    li {
+      line-height:      18px;
+      list-style-type:  none;
+      padding:          0 0 10px 0;
+      border-bottom:    1px solid $col-ogflightgrey;
+      margin:           0 0 10px 0;
+      letter-spacing:   .01rem;
+
+      a {
+        color:          $col-drkgrey;
+
+        &:visited {
+        outline:        0;
+        text-decoration:none;
+      }
+      }
+    }
+  }
+}
+.story, .tile-textbelow {
+  .story-wrap {
+
+    .pub-date {
+      color:            $col-red;
+      display:          block;
+      text-transform:   uppercase;
+      font-size:        12px;
+      font-weight:      700;
+      letter-spacing:   1px;
+    }
+    h3 {
+      color:            $col-ogfblack;
+      font-weight:      700;
+      line-height:      1.1;
+      margin-bottom:    8px;
+      margin-top:       0;
+      letter-spacing:   -0.02em;
+    }
+    p {
+      color:            $col-copygrey;
+    }
+  }
+}
+.poi-date {
+  color:            $col-red;
+  display:          block;
+  text-transform:   uppercase;
+  font-size:        10px !important;
+  font-weight:      700;
+  letter-spacing:   1px;
+}
+.featured-story {
+  padding:              0;
+  min-height:           360px;
+
+  .story-wrap {
+    height:             400px;
+    color:              $col-white;
+    background-size:    cover;
+    position:           relative;
+
+    .story-text {
+      padding:          15px;
+      background:       $img-back-black-50 repeat top left fixed;
+      background-size:  100%;
+      position:         absolute;
+      bottom:           0;
+      width:            100%;
+
+      h2 {
+        font-weight:    600;
+      }
+    }
+  }
+}
+
+.story-text {
+      height:           175px;
+      overflow:         hidden;
+}
+.whitefadebottom {
+  background:           $img-whitefade repeat-x bottom left;
+  height:               20px;
+  width:                100%;
+  position:             absolute;
+  bottom:               19px;
+  //border:               1px solid hotpink;
+}
+.tile-editorial {
+  background-color:     $col-ogfblack;
+  color:                $col-white;
+  padding:              15px;
+  height:               400px;
+  margin-bottom:        15px;
+  overflow:             hidden;
+
+  .title1, .title2, .excerpt, .authorBio {
+    padding:            0;
+  }
+  .title1 {
+    font-size:          13px;
+    font-weight:        $font-bold;
+    white-space:        nowrap;
+  }
+  .title2 {
+    font-size:          20px;
+    font-weight:        $font-bold;
+  }
+  .excerpt {
+    font-size:          12px;
+  }
+  .dottedspacer {
+    margin-bottom:      10px;
+    border-bottom:      2px dotted $col-white;
+    height:             10px;
+  }
+  .authorImg {
+    padding:            0 5px 0 0;
+    margin:             0;
+  }
+  .authorBio {
+    font-size:          10px;
+  }
+  a {
+    color:              $col-white;
+  }
+
+}
+.tile-textbelow {
+  padding-bottom:       20px;
+}
+.tile-curntIssue {
+  min-height:           150px;
+  border-bottom:        1px dotted $col-ogfblack;
+
+  //box-shadow:           0 1px 2px $col-boxshadow;
+  margin-bottom:        20px;
+  padding:              15px 0;
+
+  a {
+    color:              $col-ogfblack;
+  }
+
+  .issueThumb {
+    min-height:         150px;
+    padding:            0 10px 10px 0;
+  }
+  .pub-date, .volume, .number {
+    font-weight:        $font-bold;
+  }
+  .pub-date {
+    font-size:          20px;
+    margin-bottom:      20px;
+  }
+  .btn {
+    background-color:   $col-ogfblue;
+    color:              $col-white;
+  }
+
+}
+.tile-poi {
+  padding:              15px;
+  background-color:     $col-ogflightgrey;
+
+  .poipic {
+    padding:            0;
+  }
+  .poiblurb {
+    color:              $col-ogfblack;
+    h3 {
+      font-size:        15px;
+      font-weight:      $font-bold;
+      margin:           0;
+    }
+    p {
+      font-size:        12px;
+    }
+  }
+}
+#myCarousel {
+  .carousel-indicators {
+    bottom:             0;
+  }
+
+  .carousel-inner {
+    height:             400px;
+    //border:             1px solid hotpink;
+
+    .item {
+      height:             400px;
+      background-size:  cover;
+      background-position: center;
+      
+      img {
+        width:          100%;
+        height:         auto;
+      }
+      .carousel-caption {
+        background:     $img-back-black-50 repeat top left fixed;
+        width:          100%;
+        //top:            200px;
+        bottom:         0;
+        left:           0;
+        padding-bottom: 30px;
+      }
+    }
+  }
+}
+.eventsNearYou {
+
+  .locCurrent {
+    color:              $col-drkgrey;
+    font-size:          12px;
+    border-bottom:      1px solid $col-ogfnotsolightgrey;
+
+    .locName {
+      color:            $col-drkgrey;
+      font-weight:      $font-bold;
+    }
+  }
+  .eachEvent {
+    border-bottom:      1px solid $col-ogfnotsolightgrey;
+    padding-bottom:     5px;
+    .eventName {
+      font-weight:      $font-bold;
+    }
+    .eventDetails {
+      font-size:        12px;
+      text-align:       right;
+
+      .eventType {
+        font-weight:    $font-bold;
+      }
+    }
+  }
+}
+.tile-poll {
+  background-color:     $col-textblue;
+  color:                $col-speblue;
+
+  h1 {
+    color:              $col-white;
+    font-size:          25px;
+    border-bottom:      1px dotted grey;
+    padding:            0 0 10px 0;
+    margin:             0 0 10px 0;
+  }
+
+  .btn {
+    width:              100%;
+    font-weight:        $font-bold;
+    margin-top:         20px;
+  }
+
+  a {
+    color:              $col-speblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+  .votes {
+    color:              $col-white;
+    font-weight:        $font-bold;
+  }
+}
+
+.becomeMember {
+  background-color:     $col-ogfred;
+  color:                $col-white;
+  padding:              15px;
+  margin:               15px 0;
+  font-size:            20px;
+  a {
+    color:              $col-ogfyellow;
+    font-weight:        $font-bold;
+    &:hover {
+      color:            $col-ogfblack;
+    }
+  }
+}
+.detailImgWrap, .detailImgWrapFull, .detailImgWrapLeft, .detailImgWrapSide, .poipic {
+  overflow:             hidden;
+  -webkit-background-size:cover;
+  background-size:      cover;
+  background-position:  center;
+}
+.detailImgWrap {
+  height:               250px;
+  margin-bottom:        5px;
+}
+.detailImgWrapFull {
+  height:               350px;
+  margin-bottom:        5px;
+}
+.detailImgWrapLeft {
+  min-height:           250px;
+}
+.detailImgWrapSide {
+  height:               150px;
+  margin-bottom:        5px;
+}
+.poipic {
+  min-height:           125px;
+}
+.sideListBoxTitle {
+  font-weight:          $font-bold;
+  font-size:            20px;
+  padding:              0 0 10px 0;
+  border-bottom:        1px dotted $col-white;
+  margin-bottom:        10px;
+}
+.sideListItem {
+  padding:              0 0 5px 0;
+  border-bottom:        1px solid #393939;
+  margin-bottom:        5px;
+}
+.sideListTitle {
+  font-size:            15px;
+  font-weight:          $font-bold;
+  margin-top:           5px;
+  padding:              5px 0;
+
+  a:hover {
+    color:              $col-ogfbluehover;
+  }
+}
+.sideListDate {
+  color:                $col-ogfyellow;
+  font-weight:          $font-light;
+}
+.sideListLock {
+  color:                $col-ogfred;
+}
+.sideListTeaser {
+  padding:              0 0 10px 0;
+  border-bottom:        1px dotted $col-white;
+  margin-bottom:        10px;
+}
+.sideListIntro {
+  padding:              10px 0 0 0;
+}
+.forms {
+  border-top:           5px solid $col-hrblue;
+  margin-top:           0;
+  margin-bottom:        20px;
+  padding:              0 0 15px 0;
+  min-width:            150px;
+
+  h3 {
+    color:              $col-copygrey;
+    font-size:          25px;
+    border-bottom:      1px dotted $col-basegrey;
+    padding-bottom:     10px;
+    //padding:          0 15px 10px 15px;
+    margin-bottom:      15px;
+  }
+}
+.subscribe-div {
+  margin-top:           10px;
+}
+.briefListItem {
+  margin:               0 0 15px 0;
+  padding-top:          15px;
+  background:           $img-back-box no-repeat bottom right;
+  min-height:           100px;
+  
+  img {
+    display: none;
+  }
+
+  a {
+    color:              $col-ogfblack;
+    &:hover {
+      color:            $col-ogfbluehover;
+      text-decoration:  none;
+    }
+  }
+
+  h4 {
+    font-size:          18px;
+    margin:             0 0 5px 0;
+  }
+
+  .briefPub {
+    font-size:          10px;
+    font-weight:        $font-light;
+    color:              $col-boxshadow;
+    width:              100%;
+    text-align:         right;
+  }
+  .badge {
+    border-radius: 10px !important;
+    font-size:10px;
+  }
+  &:hover {
+    background-color:   $col-ogflightgrey;
+    cursor:             pointer;
+  }
+}
+.brief-date {
+  color:            $col-red;
+  display:          block;
+  text-transform:   uppercase;
+  font-size:        10px !important;
+  font-weight:      700;
+  letter-spacing:   1px;
+}
+.briefofinterest {
+
+  p {
+    margin:             6px 0 0 0;
+  }
+}
+.whiteFade {
+  background:           $img-back-white-75 repeat top left fixed;
+  height:               100%;
+  width:                100%;
+  padding:              10px;
+}
+.marketoForm {
+  margin-bottom:        15px;
+}

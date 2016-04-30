@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cms', '0001_initial'),
+        ('cms', '0013_urlconfrevision'),
         ('sites', '0001_initial'),
     ]
 
@@ -28,7 +28,6 @@ class Migration(migrations.Migration):
                 'verbose_name': 'Smart Snippet',
                 'verbose_name_plural': 'Smart Snippets',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='SmartSnippetPointer',
@@ -45,25 +44,13 @@ class Migration(migrations.Migration):
             name='SmartSnippetVariable',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(help_text='Enter the name of the variable defined in the smart snippet template.', max_length=50)),
+                ('name', models.CharField(help_text='Enter the name of the variable defined in the smart snippet template. Unallowed characters will be removed when the form is saved.', max_length=50)),
                 ('widget', models.CharField(help_text='Select the type of the variable defined in the smart snippet template.', max_length=50)),
                 ('resources', models.TextField(null=True, verbose_name='Admin resources', blank=True)),
             ],
             options={
-                'ordering': ['name'],
                 'verbose_name': 'Standard variable',
             },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='DropDownVariable',
-            fields=[
-                ('smartsnippetvariable_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='smartsnippets.SmartSnippetVariable')),
-                ('choices', models.CharField(help_text='Enter a comma separated list of choices that will be available in the dropdown variable when adding and configuring the smart snippet on a page.', max_length=512)),
-            ],
-            options={
-            },
-            bases=('smartsnippets.smartsnippetvariable',),
         ),
         migrations.CreateModel(
             name='Variable',
@@ -71,24 +58,36 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('value', models.TextField()),
                 ('snippet', models.ForeignKey(related_name='variables', to='smartsnippets.SmartSnippetPointer')),
-                ('snippet_variable', models.ForeignKey(related_name='variables', to='smartsnippets.SmartSnippetVariable')),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
-        migrations.AlterUniqueTogether(
-            name='variable',
-            unique_together=set([('snippet_variable', 'snippet')]),
+        migrations.CreateModel(
+            name='DropDownVariable',
+            fields=[
+                ('smartsnippetvariable_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='smartsnippets.SmartSnippetVariable')),
+                ('choices', models.CharField(help_text='Enter a comma separated list of choices that will be available in the dropdown variable when adding and configuring the smart snippet on a page.', max_length=512)),
+            ],
+            bases=('smartsnippets.smartsnippetvariable',),
+        ),
+        migrations.AddField(
+            model_name='variable',
+            name='snippet_variable',
+            field=models.ForeignKey(related_name='variables', to='smartsnippets.SmartSnippetVariable'),
         ),
         migrations.AddField(
             model_name='smartsnippetvariable',
             name='snippet',
             field=models.ForeignKey(related_name='variables', to='smartsnippets.SmartSnippet'),
-            preserve_default=True,
+        ),
+        migrations.AlterUniqueTogether(
+            name='variable',
+            unique_together=set([('snippet_variable', 'snippet')]),
         ),
         migrations.AlterUniqueTogether(
             name='smartsnippetvariable',
             unique_together=set([('snippet', 'name')]),
+        ),
+        migrations.AlterOrderWithRespectTo(
+            name='smartsnippetvariable',
+            order_with_respect_to='snippet',
         ),
     ]

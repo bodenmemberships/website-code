@@ -1,0 +1,26 @@
+{% load i18n %}
+
+{% for issue in issues %}
+    <article class="tile whiteback story"
+                style="min-height: 150px">
+    <a href="{{ issue.issue_url }}" target="_blank">
+        <div class="story-wrap">
+                <figure class="thumb" style="max-width:200px;">
+                    <div class="img-wrap"><img src="{{ issue.cover.url }}" style="max-height:150px;max-width: 200px"/></div>
+                </figure>
+            <div class="story-text">
+                <span class="pub-date">{{ issue.date }}</span>
+                <span>Volume: {{ issue.print_volume }}</span>
+                <span>Issue: {{ issue.print_issue }}</span>
+            </div>
+        </div>
+    </a>
+    </article>
+{#    {% endif %}#}
+{% empty %}
+    <p class="well">{% trans "No issues available" %}</p>
+{% endfor %}
+
+{% if show_all_url and show_all_text %}
+            <div class="row"><div class="col-xs-12 see-all-div"><a class="see-all" id="features" href="{{ show_all_url }}">{{ show_all_text }}<span></span><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a></div></div>
+{% endif %}

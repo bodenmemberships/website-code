@@ -1,0 +1,17 @@
+{% load cms_tags sekizai_tags %}
+
+{% block content %}
+    -- index --
+    <div class="well">
+    <h2>{{ title }}</h2>
+    {% if briefs %}
+        {% for brief in briefs %}
+
+            <p><a href="{{ brief.get_absolute_url }}"><span class="badge">{{ brief.magazine }}</span> {{ brief.title }} <span class="badge">{{ brief.article_hits }}</span></a></p>
+        {% endfor %}
+    {% else %}
+        <p>No article available. Sorry.</p>
+    {% endif %}
+
+    </div>
+{% endblock %}

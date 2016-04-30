@@ -1,0 +1,48 @@
+{% load i18n cms_tags sekizai_tags %}
+
+{% for article in articles %}
+
+{#    in this template, only pull the first article in the list   #}
+    {% if forloop.first %}
+        <a href={{ article.get_absolute_url}}>
+        <div class="tile-editorial row" style="background-color:{{ backcol }}">
+
+            {# if there is a featured picture for the article, show it #}
+            {% if article.picture and article.picture.url %}
+                    <div class="detailImgWrapSide" style="background-image: url({{ article.picture.url }})"></div>
+                    <div class="sideListTitle">{{ article.title }}</div>
+            {% endif %}
+
+            <div class="col-xs-12 padZero"><span class="sideListDate">{{ article.date|date:"d F Y" }}</span>
+        {% if article.is_readable == True %}{# check if the article is locked or not and indicate #}
+            | <span class="sideListLock" data-toggle="tooltip" data-placement="bottom" title="Article is free to view">&nbsp;<i class="fa fa-unlock"></i></span>
+        {% endif %}
+            </div>
+            {# if the article has a author pic AND bio, then show that, otherwise show the article intro paragraph #}
+            {% if article.author_picture and article.author_bio %}
+                <div class="col-xs-12 dottedspacer">&nbsp;</div>
+                <div class="col-xs-4 authorImg"><img class="img-responsive" src={{article.author_picture.url}}></div>
+                <div class="col-xs-8 authorBio">{{ article.author_bio | safe }}</div>
+            {% else %}
+                <div class="col-xs-12 sideListIntro">{{ article.introduction|slice:":250" | safe }}...</div>
+            {% endif %}
+
+        </div>
+        </a>
+    {% endif %}
+
+    {# if the article list is empty, let us know #}
+    {% empty %}
+        <p class="well">{% trans "No editorial available" %}</p>
+{% endfor %}
+
+{# bootstrap js block to show tooltips for the locks #}
+{% addtoblock "js" %}
+    <script type="text/javascript" charset="utf-8">
+        $( document ).ready(function() {
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+        });
+    </script>
+{%  endaddtoblock %}

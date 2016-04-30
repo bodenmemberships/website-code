@@ -1,0 +1,251 @@
+/* =================================================================== */
+/* TILES & BOXES
+====================================================================== */
+@import 'vars';
+
+.tile, .tile-blue, .tile-white, .tile-alert {
+  //box-shadow:           0 1px 2px $col-boxshadow;
+  margin-bottom:        20px;
+  padding:              15px;
+  min-width:            150px;
+}
+.tile-alert {
+  background-color:     $col-red;
+  color:                $col-white;
+
+  p {
+    margin:             0;
+  }
+}
+.tile-blue {
+  background-color:     $col-speblue;
+  color:                $col-textblue;
+
+  a {
+    color:              $col-textblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+}
+.tile-lightblue {
+  background-color:     $col-textblue;
+  color:                $col-speblue;
+
+  a {
+    color:              $col-speblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+}
+.whiteback, .tile-white {
+  background-color:   $col-white;
+}
+.link-box, .tile-links {
+  border-top: 4px solid $col-hrblue;
+  background-color:     $col-white;
+
+  ul {
+    margin:             0;
+    list-style:         disc outside;
+    padding:            0;
+
+    & > :first-child {
+      border-top:       1px solid $col-lightgrey;
+      padding-top:      10px;
+    }
+
+    li {
+      line-height:      18px;
+      list-style-type:  none;
+      padding:          0 0 10px 0;
+      border-bottom:    1px solid $col-lightgrey;
+      margin:           0 0 10px 0;
+      letter-spacing:   .01rem;
+
+      a {
+        color:          $col-drkgrey;
+
+        &:visited {
+        outline:        0;
+        text-decoration:none;
+      }
+      }
+    }
+  }
+}
+.story, .tile-textbelow {
+  .story-wrap {
+
+    .pub-date {
+      color:            $col-red;
+      display:          block;
+      text-transform:   uppercase;
+      font-size:        12px;
+      font-weight:      700;
+      letter-spacing:   1px;
+    }
+    h3 {
+      color:            $col-black;
+      font-weight:      700;
+      line-height:      1.1;
+      margin-bottom:    8px;
+      margin-top:       0;
+      letter-spacing:   -0.02em;
+    }
+    p {
+      color:            $col-copygrey;
+    }
+  }
+}
+.featured-story {
+  padding:              0;
+  min-height:           360px;
+
+  .story-wrap {
+    min-height:         360px;
+    color:              $col-white;
+    background-size:    cover;
+    position:           relative;
+
+    .story-text {
+      padding:          15px;
+      background:       $img-back-black-50 repeat top left fixed;
+      background-size:  100%;
+      position:         absolute;
+      bottom:           0;
+      width:            100%;
+
+      h2 {
+        font-weight:    600;
+      }
+    }
+  }
+}
+.tile-editorial {
+  background-color:     $col-black;
+  color:                $col-white;
+  padding:              15px;
+  min-height:           360px;
+
+  .title1, .title2, .excerpt, .authorBio {
+    padding:0;
+  }
+  .title1 {
+    font-size:          13px;
+    font-weight:        $font-bold;
+    white-space:        nowrap;
+  }
+  .title2 {
+    font-size:          20px;
+    font-weight:        $font-bold;
+  }
+  .excerpt {
+    font-size:          12px;
+  }
+  .dottedspacer {
+    margin-bottom:      10px;
+    border-bottom:      2px dotted $col-white;
+    height:             10px;
+  }
+  .authorImg {
+    padding:            0 5px 0 0;
+    margin:             0;
+  }
+  .authorBio {
+    font-size:          10px;
+  }
+  a {
+    color:$col-white;
+  }
+
+}
+.tile-textbelow {
+  padding-bottom:       20px;
+}
+.tiletitlehr {
+  margin-top:           0;
+  height:               5px;
+  border:               none;
+  color:                $col-hrblue;
+  background-color:     $col-hrblue;
+}
+.tiletitles {
+  color:                $col-copygrey;
+  font-size:            25px;
+  border-bottom:        1px dotted $col-basegrey;
+  padding-bottom:       10px;
+  margin-bottom:        15px;
+}
+.tile-curntIssue {
+  min-height:           150px;
+
+  //box-shadow:           0 1px 2px $col-boxshadow;
+  margin-bottom:        20px;
+  padding:              15px;
+
+  a {
+    color:                $col-black;
+  }
+
+  .issueThumb {
+    min-height:         150px;
+    padding:            0;
+  }
+  .pub-date, .volume, .number {
+    font-weight:        $font-bold;
+  }
+  .pub-date {
+    font-size: 20px;
+    margin-bottom:20px;
+  }
+  .btn {
+    background-color:   $col-blue;
+    color:              $col-white;
+  }
+
+}
+.tile-poi {
+  padding:15px;
+  background-color:$col-lightgrey;
+
+  .poipic {
+    padding:0;
+  }
+  .poiblurb {
+    color:            $col-black;
+    h3 {
+      font-size:15px;
+      font-weight:$font-bold;
+      margin: 0;
+    }
+    p {
+      font-size:12px;
+    }
+  }
+}
+#myCarousel {
+  .carousel-indicators {
+    bottom: 0;
+  }
+
+  .carousel-inner {
+    height:             360px;
+    //border:             1px solid hotpink;
+
+    .item {
+      img {
+        width:          100%;
+        height:         auto;
+      }
+      .carousel-caption {
+        background:     $img-back-black-50 repeat top left fixed;
+        width:          100%;
+        top: 200px;
+        left: 0;
+        padding-bottom: 30px;
+      }
+    }
+  }
+}

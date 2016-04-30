@@ -1,0 +1,20 @@
+{% extends "hse_base.html" %}
+{% load cms_tags sekizai_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+    <div class="row content-area">
+        <div class="col-sm-8 col-lg-7 col-lg-offset-1 areaContent">
+            {% placeholder "notice" %}
+            {% placeholder "content" %}
+        </div>
+        <div class="col-sm-4 col-lg-3 areaRightSide">
+            {% placeholder "aside" %}
+            {% placeholder "additional-content" %}
+        </div>
+    </div>
+
+    {% include 'z_boostrap_size_indicator.html' %}
+
+{% endblock content %}

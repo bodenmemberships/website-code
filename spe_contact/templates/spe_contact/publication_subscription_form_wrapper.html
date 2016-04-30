@@ -1,0 +1,70 @@
+{% extends "spe_base.html" %}
+{% load cms_tags sekizai_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block cms_content %}
+
+
+    <form id="ajaxquery" method="POST" action="{% url 'publication_submit' %}" class="post-form">
+        {% csrf_token %}
+        <p><label for="id_customer_id">Customer id:</label> <input id="id_customer_id" maxlength="12" name="customer_id" type="text" /></p>
+        <p><label for="id_publication">Publication:</label> <select id="id_publication" name="publication">
+            <option value="" selected="selected">---------</option>
+            <option value="HSE">HSE: HSE Now</option>
+            <option value="JPT">JPT: Journal of Petroleum Technology</option>
+            <option value="OGF">OGF: Oil and Gas Facilities</option>
+            <option value="TWA">TWA: The Way Ahead</option>
+            <option value="WWW">WWW: Online</option>
+            </select></p>
+        <p><label for="id_email">Email:</label> <input id="id_email" maxlength="254" name="email" type="email" /></p>
+        <button type="submit" class="save btn btn-default">Subscribe</button>
+    </form>
+
+    <div id="success"></div>
+
+    {% addtoblock "js" %}
+        <script>
+        $(document).ready(function() {
+            /* NEW JQuery way of submitting form
+                .live is depreciated with 1.9
+             */
+            $("#ajaxquery").submit(function(event) {
+
+                /* stop form from submitting normally */
+                event.preventDefault();
+
+                /* serialize the forms data for sending */
+                var formdata = $(this).serialize();
+
+                $.post( "{% url 'publication_submit' %}", formdata, function( data ) {
+                    // Act upon the data returned, setting it to #success
+                    $("#success").html ( data );
+                });
+
+{#                /* Send the data using post */#}
+{#                var posting = $.post( url, formdata );#}
+{##}
+{#                /* Alerts the results */#}
+{#                posting.done(function( data ) {#}
+{#                    alert('success: ' + data);#}
+{#                    $("#success").html(data);#}
+{#                });#}
+            });
+{#            $("#ajaxquery").live( "submit" , function(){#}
+{#                // Intercept the form submission#}
+{#                var formdata = $(this).serialize(); // Serialize all form data#}
+{##}
+{#                // Post data to django web service#}
+{#                $.post( "{% url 'publication_submit' %}", formdata, function( data ) {#}
+{#                    // Act upon the data returned, setting it to #success#}
+{#                    $("#success").html ( data );#}
+{#                });#}
+{#            });#}
+{#            return false; // Prevent the form from actually submitting#}
+        });
+        </script>
+    {% endaddtoblock %}
+
+{% endblock %}
+

@@ -38,6 +38,6 @@
 ehthumbs.db
 Thumbs.db
 
-project.db
-
 *.db
+
+*/migrations/*.py

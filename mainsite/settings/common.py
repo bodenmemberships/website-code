@@ -1,7 +1,6 @@
 import os
 
 gettext = lambda s: s
-DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 """
 Django settings for mainsite project.
 
@@ -12,13 +11,19 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
+
+See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
+
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
+# APP_DIR is the main application directory (mainsite for us)
+APP_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# PROJECT_DIR is the directory that is the django project (website for us)
+PROJECT_DIR = os.path.dirname(APP_DIR)
+# BASE_DIR: is whatever directory contains your environment and project directory (djangocms for me)
+BASE_DIR = os.path.dirname(PROJECT_DIR)
+# DATA_DIR: is the directory containing our data (database? staticfiles? media?)
+DATA_DIR = os.path.join(BASE_DIR, 'website_content')
+#DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@$%x*kpb@)n3tmc$7k^lb18aovbmp&g+ai7@py0rd*)4g(a(_7'
@@ -52,18 +57,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
-STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'website_static')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'mainsite', 'static'),
 )
 SITE_ID = 1
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'mainsite', 'templates'), ],
+        'DIRS': [os.path.join(APP_DIR, 'templates'), ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -101,6 +105,8 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.language.LanguageCookieMiddleware',
+    'mainsite.middleware.visitor.VisitorMiddleware',
+    'request.middleware.RequestMiddleware',
 )
 
 INSTALLED_APPS = (
@@ -137,6 +143,12 @@ INSTALLED_APPS = (
     'taggit',
     'spe_links',
     'spe_blog',
+    'google_tag_manager',
+#    'spe_contact',
+    'spe_polls',
+    'request',
+    'spe_events',
+    'djangocms_forms',
 )
 
 LANGUAGES = (
@@ -180,10 +192,16 @@ CMS_LANGUAGES = {
 
 CMS_TEMPLATES = (
     # Customize this
-    ('page.html', '1 Column Page'),
-    ('feature.html', '1 Column Page with Feature'),
-    ('2column.html', '2 Column Page'),
-    ('3column.html', '3 Column Page'),
+    ('www_3col.html', 'WWW 3 Column page & Homepage'),
+    ('www_subpage.html', 'WWW SubPage'),
+    ('ogf_home.html', 'OGF Homepage'),
+    ('ogf_subpage.html', 'OGF SubPage'),
+    ('jpt_home.html', 'JPT Homepage'),
+    ('jpt_subpage.html', 'JPT SubPage'),
+    ('hse_home.html', 'HSE Homepage'),
+    ('hse_subpage.html', 'HSE SubPage'),
+    ('twa_home.html', 'TWA Homepage'),
+    ('twa_subpage.html', 'TWA SubPage'),
 )
 
 CMS_PERMISSION = True
@@ -195,9 +213,11 @@ MIGRATION_MODULES = {
 }
 
 TAGGIT_CASE_INSENSITIVE = True
-CKEDITOR_UPLOAD_PATH = "uploads/"
-PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
-GEOIP_PATH = os.path.join(PROJECT_DIR, 'GeoIP')
+
+#CKEDITOR_UPLOAD_PATH = os.path.join(DATA_DIR, 'media/ck_media')
+CKEDITOR_UPLOAD_PATH = "ck_media/"
+GEOIP_PATH = os.path.join(PROJECT_DIR, 'data', 'GeoIP')
+# LOGFILE_NAME = os.path.join(BASE_DIR, 'output.log')
 
 LOGGING = {
     'version': 1,
@@ -214,29 +234,118 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
-            },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'output.log',
-            'formatter': 'verbose'
-            },
         },
+        # 'file': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.FileHandler',
+        #     'filename': LOGFILE_NAME,
+        #     'formatter': 'verbose'
+        #     },
+    },
     'loggers': {
         'root': {
-            'handlers': ['file'],
+            'handlers': ['console'],
             'level': 'DEBUG',
-            },
+        },
         'django': {
-            'handlers': ['file'],
+            'handlers': ['console'],
             'level': 'INFO',
-            },
+        },
         'website': {
-            'handlers': ['file'],
+            'handlers': ['console'],
             'level': 'DEBUG',
-            },
-        }
+        },
     }
+}
 
 EMAIL_HOST = "relaydev.spe.org"
+EMAIL_DEFAULT_FROM = "support@spe.org"
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+MANAGERS = (('IT', 'webmaster@spe.org'),)
 
+CKEDITOR_CONFIGS = {
+    "default": {
+        'removePlugins': 'stylesheetparser',
+        'toolbar': 'full',
+        'height': 500,
+        'width': '100%',
+        'allowedContent': True,
+        'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'contentsCss': '/static/www/css/inline.css',
+        'toolbarLocation': 'top',
+        'resize_maxHeight': 500,
+        'font_defaultLabel': 'Arial',
+        'font_names': 'Arial;Times New Roman;Verdana',
+        'extraPlugins': ','.join(
+            [
+                'div',
+                'autolink',
+                'autoembed',
+                'embedsemantic',
+                'autogrow',
+                # 'devtools',
+                'widget',
+                'lineutils',
+                'clipboard',
+                'dialog',
+                'dialogui',
+                'elementspath',
+                'codesnippet',
+                'mathjax',
+                'maximize',
+            ]),
+    }
+}
+
+# CKEDITOR_SETTINGS = {
+#         "allowedContent": True
+# }
+# config.contentsCss = 'http://localhost:8000/static/www/css/inline.css';
+
+# REQUEST_TRAFFIC_MODULES = (
+#    'request.traffic.UniqueVisitor',
+#    'request.traffic.UniqueVisit',
+#    'request.traffic.Hit',
+#    'request.traffic.Ajax',
+#    'request.traffic.NotAjax',
+#    'request.traffic.Error',
+#    'request.traffic.Error404',
+#    'request.traffic.Search',
+#    'request.traffic.Secure',
+#    'request.traffic.Unsecure',
+#    'request.traffic.User',
+#    'request.traffic.UniqueUser',
+# )
+
+REQUEST_PLUGINS = (
+    'request.plugins.TrafficInformation',
+    'request.plugins.LatestRequests',
+
+    'request.plugins.TopPaths',
+    'request.plugins.TopErrorPaths',
+    'request.plugins.TopReferrers',
+    'request.plugins.TopSearchPhrases',
+    'request.plugins.TopBrowsers',
+    'request.plugins.ActiveUsers',
+)
+
+EVENT_PERSONALIZATION_SERVER = ('http://iisdev1/iappsint/p13ndemo/api/I2KTaxonomy/GetEventList3')
+
+# Djangocms_forms Configurations
+
+# DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = '<recaptcha_site_key>'
+# DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = '<recaptcha_secret_key>'
+
+DJANGOCMS_FORMS_PLUGIN_MODULE = ('Forms')
+DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
+
+DJANGOCMS_FORMS_DEFAULT_TEMPLATE = 'djangocms_forms/form_template/default.html'
+DJANGOCMS_FORMS_TEMPLATES = (
+    ('djangocms_forms/form_template/default.html', ('Default')),
+)
+
+DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
+
+DJANGOCMS_FORMS_WIDGET_CSS_CLASSES = {'__all__': ('form-control',)}
+
+CMS_PERMISSION = True

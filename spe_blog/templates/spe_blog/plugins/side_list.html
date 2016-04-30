@@ -1,0 +1,29 @@
+{% load i18n cms_tags sekizai_tags %}
+
+<div class="tile-editorial row" style="background-color:{{ backcol }}">
+{#    <div class="col-xs-12 sideListBoxTitle">#}
+{#        THIS IS THE TITLE#}
+{#    </div>#}
+{% for article in articles %}
+    <div class="col-xs-12 sideListItem">
+        <span class="sideListTitle"><a href={{ article.get_absolute_url}}>{{ article.title }}</a></span><br>
+        <span class="sideListDate">{{ article.date|date:"d F Y" }}</span>
+        {% if article.is_readable == True %}
+            | <span class="sideListLock" data-toggle="tooltip" data-placement="bottom" title="Article is free to view">&nbsp;<i class="fa fa-unlock"></i></span>
+        {% endif %}
+    </div>
+{% empty %}
+    <p class="well">{% trans "No editorial available" %}</p>
+{% endfor %}
+</div>
+
+{% addtoblock "js" %}
+    <script type="text/javascript" charset="utf-8">
+        $( document ).ready(function() {
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+        });
+    </script>
+{%  endaddtoblock %}
+

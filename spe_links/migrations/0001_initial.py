@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import django.db.models.deletion
+import cms.models.fields
 
 
 class Migration(migrations.Migration):
@@ -16,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=255, null=True)),
-                ('url', models.URLField(max_length=255, null=True, blank=True)),
+                ('external_url', models.URLField(help_text='e.g. http://example.com/thank-you', verbose_name='External URL', blank=True)),
             ],
             options={
                 'ordering': ['category__title', 'title'],
@@ -30,10 +32,12 @@ class Migration(migrations.Migration):
                 ('code', models.CharField(max_length=20)),
                 ('title', models.CharField(max_length=255)),
                 ('class_name', models.CharField(max_length=255, null=True, blank=True)),
-                ('url', models.URLField(max_length=255, null=True, blank=True)),
+                ('show_all_external', models.URLField(help_text='e.g. http://example.com/thank-you', verbose_name='Show all - External URL', blank=True)),
+                ('show_all_page', cms.models.fields.PageField(on_delete=django.db.models.deletion.SET_NULL, blank=True, to='cms.Page', help_text='A page has priority over an external URL', null=True, verbose_name='Show all - Page URL')),
             ],
             options={
                 'verbose_name': 'category',
+                'verbose_name_plural': 'categories',
             },
         ),
         migrations.CreateModel(
@@ -51,5 +55,10 @@ class Migration(migrations.Migration):
             model_name='spelink',
             name='category',
             field=models.ForeignKey(to='spe_links.SpeLinkCategory', null=True),
+        ),
+        migrations.AddField(
+            model_name='spelink',
+            name='page_url',
+            field=cms.models.fields.PageField(on_delete=django.db.models.deletion.SET_NULL, blank=True, to='cms.Page', help_text='A page has priority over an external URL', null=True, verbose_name='Page URL'),
         ),
     ]

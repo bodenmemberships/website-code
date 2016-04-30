@@ -1,0 +1,69 @@
+{% load i18n cms_tags sekizai_tags bleachall %}
+
+{% if articles.count > 1 %}
+    <div class="row greyback briefofinterest">
+{% endif %}
+
+{% for article in articles %}
+    {% if forloop.counter|divisibleby:2 %}{% else %}
+        <div class="row">
+    {% endif %}
+
+    <article class="tile-poi col-sm-6 {% if not article.published %}unpublished{% endif %}{% if article.future %} future{% endif %}">
+    <a href="{{ article.get_absolute_url }}">
+        <div class="story-wrap row">
+        {% if article.picture and article.picture.url %}
+            <div class="col-sm-3 poipic" style="background-image: url({{ article.picture.url }})"></div>
+        {% else %}
+            <div class="col-sm-3 poipic"></div>
+        {% endif %}
+
+            <div class="col-sm-9 poiblurb">
+                <h3>{{ article.title }}</h3>
+                {% if article.date %}
+                    <p class="poi-date">{{ article.date|date:"d F Y" }}</p>
+                {% endif %}
+                {% if article.article_text %}
+                    <p>{{ article.article_text | bleachall | slice:":100" | safe }}... </p>
+                    <span class="more"> ...Read More</span>
+                {% endif %}
+            </div>
+
+        </div>
+    </a>
+    </article>
+
+    {% if forloop.counter|divisibleby:2 %}
+    </div>
+    {% else %}
+        {% if forloop.last %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% empty %}
+    <p class="well">{% trans "No items available" %}</p>
+{% endfor %}
+
+{% if articles.count > 1 %}
+    </div>
+    <div class="row dottedSpacer"></div>
+{% endif %}
+
+{% if show_all_url and show_all_text %}
+            <div class="row"><div class="col-xs-12 see-all-div"><a class="see-all" id="features" href="{{ show_all_url }}">{{ show_all_text }}<span></span><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a></div></div>
+{% endif %}
+
+{% addtoblock "js" %}
+    <script type="text/javascript" charset="utf-8">
+        $( document ).ready(function() {
+            var poipicwidth = $('.poipic').width();
+            $('.poipic').height(poipicwidth * 1.2);
+
+            $( window ).resize(function() {
+                poipicwidth = $('.poipic').width();
+                $('.poipic').height(poipicwidth * 1.2);
+            });
+        });
+    </script>
+{%  endaddtoblock %}

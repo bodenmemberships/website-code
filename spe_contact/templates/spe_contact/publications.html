@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if publications %}
+        <ul>
+        {% for publication in publications %}
+            <li><a href="{{ publication.get_absolute_url }}">{{ publication }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No publications are available.</p>
+    {% endif %}
+{% endblock content %}

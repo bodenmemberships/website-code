@@ -1,0 +1,94 @@
+{% load cms_tags sekizai_tags divideby %}
+
+{% block content %}
+    <div class="tile col-sm-10 col-md-9 col-lg-8 topicListBox">
+    {% if topics %}
+
+        <div class="row">
+
+            <div class="col-sm-6 topicListColumnL">
+
+                {% for topic in topics %}
+
+                    <div class="topicListItem">
+                        <a href="{{ publication.get_absolute_topics_url }}?topic={{ topic.id }}">
+                            <p>{{ topic.name }}</p>
+                        </a>
+                    </div>
+
+                    {% if forloop.counter == topics.count|divideby:2 %}
+                        </div>
+                        <div class="col-sm-6 topicListColumnR">
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    {% endif %}
+    </div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% block content %}#}
+{#    <div class="tile row topicListBox">#}
+{#    {% if topics %}#}
+{##}
+{#            <div class="col-sm-6 topicListColumnL">#}
+{#            {% for topic in topics %}#}
+{##}
+{#                <div class="topicListItem">#}
+{#                    <a href="{{ publication.get_absolute_topics_url }}?topic={{ topic.id }}">#}
+{#                        <p>2L {{ topic.name }}</p>#}
+{#                    </a>#}
+{#                </div>#}
+{##}
+{#                {% if forloop.counter == topics.count|divideby:2 %}#}
+{#                    </div>#}
+{#                    <div class="col-sm-6 topicListColumnR">#}
+{#                {% endif %}#}
+{##}
+{#            {% endfor %}#}
+{#            </div>#}
+{##}
+{#            <div class="col-sm-6 topicListColumnL">#}
+{#            {% for topic in topics %}#}
+{##}
+{#                <div class="topicListItem">#}
+{#                    <a href="{{ publication.get_absolute_topics_url }}?topic={{ topic.id }}">#}
+{#                        <p>2R {{ topic.name }}</p>#}
+{#                    </a>#}
+{#                </div>#}
+{##}
+{#                {% if forloop.counter == topics.count|divideby:2 %}#}
+{#                    </div>#}
+{#                    <div class="col-sm-6 topicListColumnR">#}
+{#                {% endif %}#}
+{##}
+{#            {% endfor %}#}
+{#            </div>#}
+{##}
+{#    {% endif %}#}
+{#    </div>#}
+{#{% endblock content %}#}

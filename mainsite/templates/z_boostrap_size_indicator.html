@@ -1,0 +1,55 @@
+{% load cms_tags sekizai_tags %}
+
+{% if variables.DEBUG == True %}
+    {% addtoblock "css" %}
+        <style>
+            .sizeblock {
+                background-color:white;
+                height:55px;
+                width:80px;
+                position:fixed;
+                left:25px;
+                bottom:25px;
+                border: 1px solid lightgrey;
+            }
+            .sizeIndicator {
+                z-index: 10000;
+                position: fixed;
+                bottom:40px;
+                left:30px;
+                font-size:30px;
+                font-weight:700;
+                color:hotpink;
+            }
+            .pxSize {
+                z-index: 10000;
+                position: fixed;
+                bottom:30px;
+                left:30px;
+                font-size:10px;
+                font-weight:700;
+                color:rebeccapurple;
+            }
+        </style>
+    {% endaddtoblock %}
+    <div class="sizeblock">
+        <div class="visible-xs sizeIndicator">xs</div>
+        <div class="visible-sm sizeIndicator">sm</div>
+        <div class="visible-md sizeIndicator">md</div>
+        <div class="visible-lg sizeIndicator">lg</div>
+        <div class="pxSize">pixels</div>
+    </div>
+
+    {% addtoblock "js" %}
+        <script type="text/javascript" charset="utf-8">
+            $( document ).ready(function() {
+
+                $( ".pxSize" ).text( $( window ).width() + " pixels" );
+
+                $( window ).resize(function() {
+                  $( ".pxSize" ).text( $( window ).width() + " pixels" );
+                });
+            });
+        </script>
+    {%  endaddtoblock %}
+{% endif %}

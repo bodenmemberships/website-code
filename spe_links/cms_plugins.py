@@ -8,7 +8,7 @@ class SpeLinkPluginPublisher(CMSPluginBase):
     model = SpeLinkPluginModel  # model where plugin data are saved
     module = _("Links")
     name = _("Links Plugin")  # name of the plugin in the interface
-    render_template = "spe_links/links_plugin.html"
+    render_template = "spe_links/plugins/links_plugin.html"
     cache = False
 
     def render(self, context, instance, placeholder):

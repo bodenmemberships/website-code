@@ -1,0 +1,26 @@
+{% load i18n %}
+
+{% for issue in issues %}
+  {% if forloop.first %}
+    <article class="tile-curntIssue row">
+    <a href="{{ issue.issue_url }}" target="_blank">
+        <div class="col-xs-5 issueThumb">
+            <img src="{{ issue.cover.url }}" class="img-responsive"/>
+        </div>
+    </a>
+        <div class="col-xs-7 padZero">
+            <div class="pub-date">{{ issue.date|date:"F Y" }}</div>
+            <div class="volume">Volume: {{ issue.print_volume }}</div>
+            <div class="number">Issue: {{ issue.print_issue }}</div>
+            {% if show_subscribe_url %}
+            <div class="subscribe-div">
+                <a href="{{ show_subscribe_url }}"><button type="button" class="btn btn-block">Subscribe</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </article>
+
+  {% endif %}
+{% empty %}
+    <p class="well">{% trans "No issues available" %}</p>
+{% endfor %}

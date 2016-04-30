@@ -1,0 +1,30 @@
+{% load cms_tags sekizai_tags divideby %}
+
+{% block content %}
+    {% if topics %}
+        <div class="row">
+            <div class="tile col-sm-12 topicListBox">
+
+                <div class="row topicListColumnOne">
+    {#            <div class="row">#}
+                {% for topic in topics %}
+
+                    <div class="col-sm-4 topicListItem">
+                        <a href="{{ publication.get_absolute_topics_url }}?topic={{ topic.id }}">
+                            <p>{{ topic.name }}</p>
+                        </a>
+                    </div>
+
+    {#            {% if forloop.counter|divisibleby:3 %}#}
+    {#                    </div>#}
+    {#                    <div class="row">#}
+    {#            {% endif %}#}
+
+                {% endfor %}
+    {#            </div>#}
+
+            </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

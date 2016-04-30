@@ -1,0 +1,431 @@
+{% extends "html5_bootstrap.html" %}
+
+{% block css_base %}
+    {% load staticfiles %}
+    <!-- CSS_BASE -->
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'www/css/translateelement.css' %}" /><!-- GOOGLE TRANSLATE WIDGET -->
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'www/css/mainstyle.css' %}" />
+{% endblock css_base %}
+
+{% block content_header %}
+<header id="spe-header">
+            <div class="global-nav row"><!--  navbar-fixed-top -->
+                    <nav id="global-nav" class="col-sm-6 col-sm-offset-1">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about/">About SPE</a></li>
+                            <li><a href="/contact/">Contact Us</a></li>
+                            <li><a href="{{ login.url }}" id="global_login" class="loginLink"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ login.label }}</a></li>
+                        </ul>
+                    </nav>
+                    <div id="translate-widget" class="col-sm-3">
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'af,ar,az,bg,bn,bs,cs,da,de,el,en,es,fa,fr,hi,hr,hu,id,it,iw,ja,ka,ko,lt,lv,ms,nl,no,pl,pt,ro,ru,sk,sl,sr,sv,sw,th,tl,tr,uk,ur,vi,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-39288943-2'}, 'google_translate_element');
+                                }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </div>
+            </div>
+
+            <!-- YAMM navbar -->
+            <div class="navbar yamm navbar-default row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <div class="navbar-header">
+                  <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+<!--                  <a href="#" class="navbar-brand">Yamm Megamenu</a>-->
+                </div>
+                <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+
+                    <!-- Membership -->
+                    <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Membership</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <div class="yamm-content">
+                            <div class="row megarow">
+
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <a href="/"><span class="link-title">Join SPE</span></a>
+                                            <a href="/"><span class="link-title">Renew Your Membership</span></a>
+                                            <a href="/"><span class="link-title">Membership Costs</span></a>
+                                            <a href="/" class="last"><span class="link-title">Update Your Profile</span></a>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">Services</li>
+                                                <li><a href="/">Member Benefits</a></li>
+                                                <li><a href="/">Membership Directory</a></li>
+                                                <li><a href="/">New Member Resources</a></li>
+                                                <li><a href="http://connect.spe.org/">SPE Connect</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs visible-sm navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">Professionals</li>
+                                                <li><a href="/">Awards</a></li>
+                                                <li><a href="/">Sections</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li class="heading">Students</li>
+                                                <li><a href="/">Scholarships</a></li>
+                                                <li><a href="/">Paper Contests</a></li>
+                                                <li><a href="/">Student Chapters</a></li>
+                                                <li><a href="/" class="more">All Students <i class="fa fa-angle-double-right"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">SPE Programs</li>
+                                                <li><a href="/">Distinguished Lecturer</a></li>
+                                                <li><a href="/">Volunteer</a></li>
+                                                <li><a href="/">eMentoring</a></li>
+                                                <li><a href="/">SPE Foundation</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="see-all col-xs-12">
+                                            <a href="/">All Membership <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                        <div class="clear"></div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <!-- Events -->
+                    <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Events</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <div class="yamm-content">
+                            <div class="row megarow">
+
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <a href="/"><span class="link-icon events-calendar"></span><span class="link-title">Events Calendar</span></a>
+                                            <a href="/"><span class="link-icon training-courses"></span><span class="link-title">Training Courses</span></a>
+                                            <a href="/"><span class="link-icon web-events"></span><span class="link-title">Web Events</span></a>
+                                            <a href="/" class="last"><span class="link-icon distinguished-lect"></span><span class="link-title">Distinquished Lecturer</span></a>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">AUTHORS</li>
+                                                <li><a href="/">Author Information</a></li>
+                                                <li><a href="/">Call for Papers</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs visible-sm navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">EXHIBITORS</li>
+                                                <li><a href="/">Exhibitor Information</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">ADVERTISERS</li>
+                                                <li><a href="/">Advertising Information</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="see-all col-xs-12">
+                                            <a href="/">All Events <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                        <div class="clear"></div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <!-- Publications -->
+                    <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Publications</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <div class="yamm-content">
+                            <div class="row megarow">
+
+                                        <div class="nav-col col-sm-6 col-md-4 publist">
+                                            <a href="/">
+                                                <span class="link-icon jpt"></span>
+                                                <span class="link-text">
+                                                    <span class="link-title text-wrap pubs">Journal of Petroleum Technology</span><br>
+                                                    <span class="link-summary">The Society's flagship magazine</span>
+                                                </span>
+                                                <div class="clear"></div>
+                                            </a>
+                                            <a href="/">
+                                                <span class="link-icon ogf"></span>
+                                                <span class="link-text">
+                                                    <span class="link-title pubs">Oil &amp; Gas Facilities</span><br>
+                                                    <span class="link-summary">Projects, Systems, Technologies</span>
+                                                </span>
+                                                <div class="clear"></div>
+                                            </a>
+                                            <a href="/">
+                                                <span class="link-icon peer"></span>
+                                                <span class="link-text">
+                                                    <span class="link-title pubs">Peer-Reviewed Journals</span><br>
+                                                    <span class="link-summary">Approved by technical experts</span>
+                                                </span>
+                                                <div class="clear"></div>
+                                            </a>
+                                            <a href="/" class="last">
+                                                <span class="link-icon hse"></span>
+                                                <span class="link-text">
+                                                    <span class="link-title pubs">HSE Now</span><br>
+                                                    <span class="link-summary">A digital publication for HSSE-SR</span>
+                                                </span>
+                                                <div class="clear"></div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">MORE PUBLICATIONS</li>
+                                                <li><a href="/">The Way Ahead</a></li>
+                                                <li><a href="/">Bookstore</a></li>
+                                                <li><a href="/">Technical Reports</a></li>
+                                                <li><a href="/">OnePetro (Technical Papers)</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs visible-sm navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-3">
+                                            <ul>
+                                                <li class="heading">AUTHORS</li>
+                                                <li><a href="/">Book Proposals</a></li>
+                                                <li><a href="/">Peer Review</a></li>
+                                                <li><a href="/">Conference Papers</a></li>
+                                                <li><a href="/">Calls for Papers</a></li>
+                                                <li><a href="/">Policies and Guidelines</a></li>
+                                                <li><a href="/" class="more">All Authors <i class="fa fa-angle-double-right"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-2">
+                                            <ul>
+                                                <li class="heading">ADVERTISERS</li>
+                                                <li><a href="/"></a>Advertising Information</li>
+                                                <li><a href="/"></a>Advertising Rates</li>
+                                            </ul>
+                                        </div>
+                                        <div class="see-all col-xs-12">
+                                            <a href="/">All Publications <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                        <div class="clear"></div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <!-- Training -->
+                    <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Training</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <div class="yamm-content">
+                            <div class="row megarow">
+
+                                        <div class="nav-col col-sm-6 col-md-4">
+                                            <a href="/">
+                                                <span class="link-icon calendar"></span>
+                                                <span class="link-text"><span class="link-title">Course Schedule</span></span>
+                                                <div class="clear"></div>
+                                            </a>
+                                            <a href="/">
+                                                <span class="link-icon training-courses"></span>
+                                                <span class="link-text"><span class="link-title">Course Catalog</span></span>
+                                                <div class="clear"></div>
+                                            </a>
+                                            <a href="/" class="last">
+                                                <span class="link-icon web-events"></span>
+                                                <span class="link-text"><span class="link-title">Web Events</span></span>
+                                                <div class="clear"></div>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-4">
+                                            <ul>
+                                                <li class="heading">PROFESSIONAL COMPETENCY</li>
+                                                <li><a href="/">SPE Certification</a></li>
+                                                <li><a href="/">Competency Matrices</a></li>
+                                                <li><a href="/">US Professional Engineering Registration</a></li>
+                                                <li><a href="/">Competency Management Tool</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs visible-sm navcolborder"></div>
+                                        <div class="nav-col col-sm-6 col-md-4">
+                                            <ul>
+                                                <li class="heading">GUIDELINES</li>
+                                                <li><a href="/">Code of Conduct</a></li>
+                                                <li><a href="/">Engineering Ethics</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 visible-xs navcolborder"></div>
+
+                                        <div class="see-all col-xs-12">
+                                            <a href="/">All Training <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                        <div class="clear"></div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <!-- Resources -->
+                    <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <div class="yamm-content">
+                            <div class="row megarow">
+
+                                <div class="nav-col col-sm-6 col-md-4">
+
+
+                                    <a href="https://www.onepetro.org/?_ga=1.240107523.1004771966.1439232248">
+                                        <span class="link-icon onepetro"></span>
+									<span class="link-text">
+                        				<span class="link-title pubs">OnePetro</span><br>
+										<span class="link-summary">Technical paper library</span>
+									</span>
+                                        <div class="clear"></div>
+                                    </a>
+                                    <a href="http://petrowiki.org/">
+                                        <span class="link-icon petrowiki"></span>
+									<span class="link-text">
+                        				<span class="link-title pubs">PetroWiki</span><br>
+										<span class="link-summary">E&amp;P industry wiki</span>
+									</span>
+                                        <div class="clear"></div>
+                                    </a>
+                                    <a href="http://www.energy4me.org">
+                                        <span class="link-icon energy4me"></span>
+									<span class="link-text padding">
+										<span class="link-title pubs">Energy4Me</span><br>
+										<span class="link-summary">E&amp;P classroom education</span>
+									</span>
+                                        <div class="clear"></div>
+                                    </a>
+                                    <a href="http://connect.spe.org/" class="last">
+                                        <span class="link-icon connect"></span>
+									<span class="link-text">
+										<span class="link-title pubs">SPE Connect</span><br>
+										<span class="link-summary">Networking and discussions</span>
+									</span>
+                                        <div class="clear"></div>
+                                    </a>
+
+
+                                </div>
+                                <div class="col-xs-12 visible-xs navcolborder"></div>
+                                <div class="nav-col col-sm-6 col-md-4">
+                                    <ul>
+                                        <li class="heading">INDUSTRY</li>
+                                        <li><a href="/">Industry Jobs <span class="redText">*NEW</span></a></li>
+                                        <li><a href="/">Salary Survey</a></li>
+                                        <li><a href="/">Sustainability</a></li>
+                                        <li><a href="/">Petroleum Reserves Definitions</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 visible-xs visible-sm navcolborder"></div>
+                                <div class="nav-col col-sm-6 col-md-4">
+                                    <ul>
+                                        <li class="heading">SPE RESOURCES</li>
+                                        <li><a href="/">About SPE Disciplines</a></li>
+                                        <li><a href="/">Bookstore</a></li>
+                                        <li><a href="/">Technical Sections</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 visible-xs navcolborder"></div>
+
+                                <div class="see-all col-xs-12">
+                                    <a href="/">All Resources <i class="fa fa-angle-double-right"></i></a>
+                                </div>
+
+                                <div class="clear"></div>
+
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div><!-- col -->
+            </div>
+            <!-- END YAMM -->
+
+            <!-- LOGO BAR -->
+            <div id="branding" class="row">
+                    <div class="col-xs-12 col-sm-4 col-sm-offset-1 logo-wrap">
+{#                        <a href="/" class="spe-logo" title="SPE Homepage"><h1 id="logo">The Society of Petroleum Engineers</h1></a>#}
+                        <img src="{% static 'www/img/spe_logo_full.png' %}" class="img-responsive">
+                    </div>
+                    <div class="col-xs-10 col-xs-offset-1 col-sm-3 welcomemsg text-right">
+                        {% if login.authenticated == True %}
+                            Welcome, {{visitor.name}}<br>
+                            <a class="update_profile" href="/ams/Custom/CustomerProfile.aspx">My profile</a>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-10 col-xs-offset-1 col-sm-3 col-md-3 search">
+                        <div id="search">
+                            <div class="GoogleSiteSearch">
+                                <div class="form-wrapper">
+                                    <form class="searchForm" action="/sitemap/search.php" method="post" accept-charset="utf-8">
+                                        <input type="search" name="q" id="gssTextInput" placeholder="Search">
+                                        <input type="submit" value="" id="gssSubmitButton">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </header><!-- #spe-header -->
+{% endblock content_header %}
+
+{% block content_footer %}
+        <footer id="spe-footer">
+            <div class="nav-container row">
+                <div class="col-sm-12 col-md-7 footleft">
+                    <nav id="text-links">
+                        <ul>
+                            <li><a href="/about/guidelines.php">Guidelines</a></li>
+                            <li><a href="/press/">Press</a></li>
+                            <li><a href="/jobs/">Jobs at SPE</a></li>
+                            <li><a href="/contact/">Contact Us</a></li>
+                            <li><a href="/sitemap/">Sitemap</a></li>
+                        </ul>
+                    </nav>
+                    <nav id="legal-links">
+                        <ul>
+                            <li><a href="/about/privacypolicy.php">Privacy Policy</a></li>
+                            <li><a href="/about/cookiepolicy.php">Cookie Policy</a></li>
+                            <li><a href="/about/terms-of-service.php">Terms of Service</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-sm-12 visible-xs visible-sm footspace"></div>
+                <nav id="social-media-links" class="col-sm-12 col-md-5 footright">
+                    <ul>
+                        <li><a target="_blank" href="https://www.facebook.com/spemembers" id="facebook" title="Connect with SPE on Facebook"></a></li>
+                        <li><a target="_blank" href="https://twitter.com/SPEtweets" id="twitter" title="Follow SPE Events on Twitter"></a></li>
+                        <li><a target="_blank" href="http://www.linkedin.com/groups/Society-Petroleum-Engineers-57660/about" id="linkedin" title="Join SPE's professional network on LinkedIn"></a></li>
+                        <li><a target="_blank" href="http://www.youtube.com/2012SPE" id="youtube" title="Explore SPE videos on YouTube"></a></li>
+                        <li><a target="_blank" href="https://instagram.com/spengineers/" id="instagram" title="Connect with SPE on Instragram"></a></li>
+                        <li><a target="_blank" href="http://connect.spe.org/" id="connect" class="last" title="SPE's forum and social media platform."></a></li>
+                    </ul>
+                </nav>
+
+                <div class="col-sm-10 col-sm-offset-1">
+                    <p class="copyright">&copy; Copyright 2003-2016, Society of Petroleum Engineers. All rights reserved.</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </footer><!-- #spe-footer -->
+{% endblock content_footer %}

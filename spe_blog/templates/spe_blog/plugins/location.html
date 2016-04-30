@@ -1,8 +1,12 @@
 <div>
-    <p>City: {{ location.city }}</p>
-    <p>Country: {{ location.country_name }}</p>
-    <p>Country Code: {{ location.country_code }}</p>
-    <p>Country Code (3): {{ location.country_code3 }}</p>
-    <p>Latitude: {{ location.latitude }}</p>
-    <p>Longitude: {{ location.longitude }}</p>
+    <p>Events close to: {{ location.city }}, {{ location.country_name }}</p>
+    {% for meeting in meetings %}
+        <a href={{ meeting.url }}>
+        <p>Type: {{meeting.type }}</p>
+        <p>Event: {{ meeting.name }}</p>
+        <p>Location: {{ meeting.location }}</p>
+        <p>Starting: {{ meeting.dt_begins }}</p>
+        <p>Ending: {{ meeting.dt_ends }}</P>
+        </a>
+    {% endfor %}
 </div>

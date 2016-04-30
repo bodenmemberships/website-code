@@ -1,0 +1,19 @@
+virtualenv env --no-site-packages
+
+source env/bin/activate
+
+download the requirements.txt from github project
+
+pip install -r requirements.txt --no-cache-dir
+
+git clone https://github.com/spe-sa/website-code.git website
+
+./manage.py makemigrations
+./manage.py migrate
+
+./manage.py loaddata data/auth_users.json (if localhost)
+
+./data/load_all_data.sh
+
+./manage.py runserver
+

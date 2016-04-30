@@ -1,0 +1,320 @@
+/* =================================================================== */
+/* TILES & BOXES                                                       */
+/* =================================================================== */
+@import 'vars';
+
+.tile, .tile-blue, .tile-lightblue, .tile-white, .tile-alert {
+  box-shadow:           0 1px 2px $col-boxshadow;
+  margin-bottom:        20px;
+  padding:              15px;
+  min-width:            150px;
+}
+.tile-alert {
+  background-color:     $col-redtext;
+  color:                $col-white;
+
+  p {
+    margin:             0;
+  }
+}
+.tile-blue {
+  background-color:     $col-speblue;
+  color:                $col-textblue;
+
+  a {
+    color:              $col-textblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+}
+.tile-lightblue {
+  background-color:     $col-textblue;
+  color:                $col-speblue;
+
+  h3 {
+    margin-top:         0;
+  }
+  a {
+    color:              $col-speblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+}
+.tileImgBack {
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.whiteback, .tile-white {
+    background-color:   $col-white;
+  }
+.link-box, .tile-links {
+  border-top: 4px solid $col-speblue2;
+  background-color:     $col-white;
+
+  ul {
+    margin:             0;
+    list-style:         disc outside;
+    padding:            0;
+
+    & > :first-child {
+      border-top:       1px solid $col-pagegrey;
+      padding-top:      10px;
+    }
+
+    li {
+      line-height:      18px;
+      list-style-type:  none;
+      padding:          0 0 10px 0;
+      border-bottom:    1px solid $col-pagegrey;
+      margin:           0 0 10px 0;
+      letter-spacing:   .01rem;
+
+      a {
+        color:          $col-darkgrey;
+
+        &:visited {
+        outline:        0;
+        text-decoration: none;
+      }
+      }
+    }
+  }
+}
+.story {
+  .story-wrap {
+
+    .pub-date {
+      color:            $col-redtext;
+      display:          block;
+      text-transform:   uppercase;
+      font-size:        12px;
+      font-weight:      700;
+      letter-spacing:   1px;
+    }
+    h3 {
+      color:            $col-black;
+      font-weight:      700;
+      line-height:      1.1;
+      margin-bottom:    8px;
+      margin-top:       0;
+      letter-spacing:   -0.02em;
+    }
+    p {
+      color:            $col-copygrey;
+    }
+  }
+}
+.featured-story {
+  padding:              15px;
+  min-height:           300px;
+
+  .story-wrap {
+    min-height:         300px;
+    color:              $col-white;
+    background-size:    cover;
+    position:           relative;
+
+    .story-text {
+      padding:          15px;
+      background:       $img-back-black-50 repeat top left fixed;
+      background-size:  100%;
+      position:         absolute;
+      bottom:           0;
+      width:            100%;
+
+      h2 {
+        font-weight:    600;
+      }
+    }
+  }
+}
+.tile-curntIssue {
+  min-height:           150px;
+  margin-bottom:        20px;
+  padding:              5px;
+  box-shadow:           0 1px 2px $col-boxshadow;
+  background-color:     $col-white;
+
+  a {
+    color:              $col-black;
+  }
+
+  .issueThumb {
+    min-height:         100px;
+    padding:            10px 5px 0 0;
+  }
+  .pub-date, .volume, .number {
+    font-weight:        $font-bold;
+  }
+  .pub-date {
+    padding-top:        10px;
+    font-size:          15px;
+    margin-bottom:      15px;
+    white-space:        nowrap;
+  }
+  .volume, .number {
+    font-size:          10px;
+  }
+  .btn {
+    background-color:   $col-speblue;
+    color:              $col-white;
+  }
+
+}
+.tiletitlehr {
+  margin-top:           0;
+  height:               1px;
+  border:               none;
+  color:                $col-speblue;
+  background-color:     $col-speblue;
+}
+.tiletitles {
+  color:                $col-copygrey;
+  font-size:            25px;
+  border-bottom:        1px dotted $col-medgrey;
+  padding-bottom:       10px;
+  margin-bottom:        15px;
+}
+.tileDate {
+  font-weight:          $font-bold;
+  margin-bottom:        10px;
+}
+.tileText {
+  color:                $col-black;
+  &:hover {
+    color:              $col-black;
+  }
+}
+.tile-poi {
+  padding:              15px;
+  background-color:     $col-lightgrey;
+
+  .poipic {
+    padding:            0;
+  }
+  .poiblurb {
+    color:              $col-black;
+    h3 {
+      font-size:        15px;
+      font-weight:      $font-bold;
+      margin:           0;
+    }
+    p {
+      font-size:        12px;
+    }
+  }
+}
+#myCarousel {
+  .carousel-indicators {
+    bottom: 0;
+  }
+
+  .carousel-inner {
+    height:             360px;
+
+    .item {
+      img {
+        width:          100%;
+        height:         auto;
+      }
+      .carousel-caption {
+        background:     $img-back-black-50 repeat top left fixed;
+        width:          100%;
+        top: 200px;
+        left: 0;
+        padding-bottom: 30px;
+      }
+    }
+  }
+}
+
+.eventsNearYou {
+
+
+  .locCurrent {
+    color:              $col-darkgrey;
+    font-size:          12px;
+    border-bottom:      1px solid $col-sprlghtgry;
+
+    .locName {
+      color:            $col-darkgrey;
+      font-weight:      $font-bold;
+    }
+  }
+  .eachEvent {
+    border-bottom:      1px solid $col-sprlghtgry;
+    padding-bottom:     5px;
+    .eventName {
+      font-weight:      $font-bold;
+    }
+    .eventDetails {
+      font-size:        12px;
+      text-align:       right;
+
+      .eventType {
+        font-weight:    $font-bold;
+      }
+    }
+  }
+}
+
+.tile-poll {
+  background-color:     $col-textblue;
+  color:                $col-speblue;
+
+  h1 {
+    color:              $col-white;
+    font-size:          25px;
+    border-bottom:      1px dotted grey;
+    padding:            0 0 10px 0;
+    margin:             0 0 10px 0;
+  }
+
+  .btn {
+    width:              100%;
+    font-weight:        $font-bold;
+    margin-top:         20px;
+  }
+
+  a {
+    color:              $col-speblue;
+    &:hover {
+      color:            $col-white;
+    }
+  }
+  .votes {
+    color:              $col-white;
+    font-weight:        $font-bold;
+  }
+}
+
+.becomeMember {
+  background-color:     $col-textblue;
+  color:                $col-speblue;
+  padding:              15px;
+  margin:               15px 0;
+  font-size:            20px;
+  a {
+    color:              $col-white;
+    font-weight:        $font-bold;
+    &:hover {
+      color:            $col-footgrey;
+    }
+  }
+}
+//// background: #000 url(image.gif) no-repeat top left fixed;
+//.demoback {
+//  background-image: url($img-);
+//  background-repeat: no-repeat;
+//  background-position: right top;
+//  background-size: 100% 100%;
+//  margin-right: 200px;
+//}
+//.demoback2 {
+//  background: url("img_tree.png") no-repeat right top;
+//  background-size: 100% 100%;
+//  margin-right: 200px;
+//}

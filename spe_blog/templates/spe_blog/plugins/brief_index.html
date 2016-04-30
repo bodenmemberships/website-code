@@ -1,0 +1,51 @@
+{% load cms_tags sekizai_tags bleachall %}
+
+{% block content %}
+    <div class="row tile padZero">
+    {% if articles %}
+        {% for article in articles %}
+
+            {% if forloop.counter|divisibleby:2 %}{% else %}
+                <div class="row">
+            {% endif %}
+
+            {% if forloop.last %}
+                {% if forloop.counter|divisibleby:2 %}
+                    <div class="col-sm-6 briefListItem">
+                {% else %}
+                    <div class="col-sm-12 briefListItem">
+                {% endif %}
+            {% else %}
+                <div class="col-sm-6 briefListItem">
+            {% endif %}
+            <a href="{{ article.get_absolute_url }}">
+                <h4>{{ article.title }}</h4>
+                {% if article.date %}
+                    <p class="brief-date">{{ article.date|date:"d F Y" }}</p>
+                {% endif %}
+                <p>
+                    {{ article.article_text | bleachall | slice:":100" | striptags | safe }} ...
+                </p>
+            </a>
+            <div class="moreB">... Read More</div>
+            </div>
+
+            {% if forloop.counter|divisibleby:2 %}
+                </div>
+            {% else %}
+                {% if forloop.last %}
+                    </div>
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+    {% else %}
+        <p>No article available. Sorry.</p>
+    {% endif %}
+
+    {% if show_all_url and show_all_text %}
+        <div class="row"><div class="col-xs-12 see-all-div"><a class="see-all" id="features" href="{{ show_all_url }}">{{ show_all_text }}<span></span><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a></div></div>
+    {% endif %}
+
+    </div>
+{% endblock content %}

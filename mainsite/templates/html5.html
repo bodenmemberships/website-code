@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     {# Add Third-party plugins and apps here. Like JQuery & bootstrap #}
     {% block plugs_apps %}{% endblock plugs_apps %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'www/css/inline.css' %}" />
     {# Add Third-party fonts here. Like google fonts, TypeKit, FontAwesome #}
     {% block web_fonts %}
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700' rel='stylesheet' type='text/css'>
@@ -48,8 +49,10 @@
 
     {# adding block cms_content to base cms template for overriding #}
     {% block cms_content %}
-        <i class="fa fa-meh-o"></i><span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-    {% endblock cms_content %}
+        <div class="container-liquid {% block container_class %}page-content background{% endblock %}">
+            {% block content %}<i class="fa fa-meh-o"></i><span class="glyphicon glyphicon-picture" aria-hidden="true"></span>{% endblock content %}
+        </div>
+    {% endblock %}
 
     {# adding block content_footer to base cms template for overriding #}
     {% block content_footer %}{% endblock content_footer %}
@@ -57,8 +60,11 @@
     {# Add the page wrapper ending here #}
     {% block wrap_end %}{% endblock wrap_end %}
 
+    <!-- JS BLOCK -->
     {# adding block js_inline to base cms template for overriding #}
     {% render_block "js" %}
 
+    {#    misc adds to bottom#}
+    {% block last_instructions %}{% endblock last_instructions %}
 </body>
 </html>

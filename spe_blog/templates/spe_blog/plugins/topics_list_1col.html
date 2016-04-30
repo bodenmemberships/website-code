@@ -1,0 +1,19 @@
+{% load cms_tags sekizai_tags divideby %}
+
+{% block content %}
+    {% if topics %}
+        <div class="tile col-sm-6 col-md-5 col-lg-4 topicListBox">
+            <div class="row topicListColumnOne">
+            {% for topic in topics %}
+
+                <div class="col-sm-12 topicListItem">
+                    <a href="{{ publication.get_absolute_topics_url }}?topic={{ topic.id }}">
+                        <p>{{ topic.name }}</p>
+                    </a>
+                </div>
+
+            {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

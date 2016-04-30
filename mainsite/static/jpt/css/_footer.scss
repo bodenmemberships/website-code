@@ -1,0 +1,119 @@
+@import 'vars';
+
+.footerUpper {
+  background-color:   $col-blue;
+  font-family:        $font-titles;
+  padding:            30px;
+  margin:             30px 0 0 0;
+}
+.footerLower {
+  background-color:   $col-black;
+  color:              $col-white;
+  font-family:        $font-titles;
+  min-height:         100px;
+  padding:            10px;
+
+  img{
+    height:           80px;
+    width:            auto;
+    float:            left;
+  }
+}
+.footerULeft {
+  float:              left;
+}
+.footerURight {
+  float:              right;
+  color:              $col-menuwhite;
+
+  a {
+    color:            $col-menuwhite;
+
+    &:hover {
+      color:          $col-yellow;
+      text-decoration:none;
+    }
+  }
+}
+.footerLogo {
+}
+.footerSocial {
+  font-size:          20px;
+  list-style-type:    none;
+  padding:            13px 0 0 0;
+  overflow:           hidden;
+
+  li {
+    float:            left;
+    margin-top:       -4px;
+  }
+
+  li a {
+    display:          block;
+    color:            $col-menuwhite;
+    text-align:       center;
+    padding:          0 10px;
+    text-decoration:  none;
+  }
+
+  li a:hover {
+    color:            $col-yellow;
+  }
+}
+.footerMenu {
+  max-width:          800px;
+  font-size:          20px;
+  font-weight:        $font-bold;
+  list-style-type:    none;
+  padding:            13px 0 0 100px;
+  overflow:           hidden;
+
+  li {
+    float:            left;
+    margin-top:       -4px;
+  }
+
+  li a {
+    display:          block;
+    color:            $col-menuwhite;
+    text-align:       center;
+    padding:          0 10px;
+    text-decoration:  none;
+  }
+
+  li a:hover {
+    color:            $col-yellow;
+    text-decoration:  none;
+  }
+}
+
+.footerSPEMenu {
+  max-width:          800px;
+  font-size:          16px;
+  font-weight:        $font-bold;
+  list-style-type:    none;
+  padding:            30px 0 0 100px;
+  overflow:           hidden;
+
+  li {
+    float:            left;
+    margin-top:       -4px;
+  }
+
+  li a {
+    display:          block;
+    color:            $col-menuwhite;
+    text-align:       center;
+    padding:          0 10px;
+    text-decoration:  none;
+  }
+
+  li a:hover {
+    color:            $col-yellow;
+  }
+}
+.copyright {
+  font-size:          10px;
+  color:              $col-menuwhite;
+  white-space:        nowrap;
+}

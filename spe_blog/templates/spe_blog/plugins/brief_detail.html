@@ -1,0 +1,57 @@
+{% load cms_tags sekizai_tags tz %}
+
+    <div class="row articleDetail">
+        <div class="col-sm-12 articleTitleBox">
+{#            <h1 class="articleTitle">{{ article.title }}</h1>#}
+            <hr class="tiletitlehr">
+            <h1 class="tiletitles">{{ article.title }}</h1>
+            <div class="col-sm-12 tiletitlehr"></div>
+            <div class="col-sm-8 articleAuthorBox">
+                {{ article.author }} | {{ article.date|date:"d F Y" }}
+            </div>
+            <div class="col-sm-4 articleShares text-right">
+                {% include 'include_article_shares.html' %}
+            </div>
+        </div>
+
+        {% if article.sponsored == True %}
+            <div class="col-sm-12 sponsored">SPONSORED</div>
+        {% endif %}
+
+    {% if article.picture and article.picture.url %}
+        <div class="col-sm-12 articlePicture">
+            <img src="{{article.picture.url}}" alt="{{article.alternate}}" class="img-responsive">
+        </div>
+    {% endif %}
+
+        <div class="col-sm-12 articleBodyText">
+
+            {% if article.is_readable == True %}
+
+                {% if article.show_paybox %}
+                    <div class="col-sm-12 becomeMember text-center">
+                        <p>You are have access to this full article to experience the outstanding content that is available to OGF subscribers and SPE members.</p>
+                        <p>Please <a href="">JOIN SPE</a> or <a href="">Subscribe to OGF</a><br>
+                            in order to gain full access to the rest that OGF has to offer.</p>
+                </div>
+                {% endif %}
+
+                {{ article.article_text | safe }}
+
+            {% else %}
+
+                {{ article.introduction | safe }}...
+
+                <div class="col-sm-12 becomeMember text-center">To read the rest of the article, please<br>
+                    <a href="">JOIN SPE</a> or <a href="">Subscribe to OGF</a>
+                </div>
+
+
+            {% endif %}
+
+
+        </div>
+        <div class="col-sm-12 articleShares text-left">
+            {% include 'include_article_shares.html' %}
+        </div>
+    </div>

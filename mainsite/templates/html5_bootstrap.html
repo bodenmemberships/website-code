@@ -1,9 +1,14 @@
 {% extends "html5.html" %}
-{% load staticfiles %}
+{% load staticfiles cms_tags sekizai_tags %}
 {% block plugs_apps %}
 
     <script src="{% static 'js/jquery/jquery-1.12.0.min.js' %}"></script>
     <script src="{% static 'js/jquery/jquery-migrate-1.2.1.min.js' %}"></script>
+{#    <script src="{% static 'js/spectrum.js' %}"></script>#}
+
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
@@ -20,3 +25,5 @@
 {{ block.super }}
     <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css' %}">
 {% endblock web_fonts %}
+
+{% block last_instructions %}{% include 'z_boostrap_size_indicator.html' %}{% endblock last_instructions %}

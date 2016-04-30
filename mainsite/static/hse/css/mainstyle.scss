@@ -1,0 +1,78 @@
+/* =================================================================== */
+/* MAIN STYLE SHEET FOR HSE
+====================================================================== */
+@import 'vars';
+
+/* ************************ */
+/* BASE HTML STYLES         */
+body {
+  font-family:            $font-main;
+}
+h1, h2, h3, h4 {
+  font-family:            $font-titles;
+  font-weight:            $font-bold;
+}
+
+* {
+  -webkit-border-radius:  0 !important;
+  -moz-border-radius:     0 !important;
+  border-radius:          0 !important;
+}
+.row {
+  //margin:0 !important;
+  margin:                 0;
+}
+.container-fluid {
+  padding:                0;
+}
+a {
+  &:hover {
+    text-decoration:      none;
+  }
+}
+
+/* ************************ */
+/* HEAD FOOT & CONTENT      */
+//@import 'header';
+//@import 'footer';
+//@import 'content';
+//@import 'tiles';
+//@import 'adzones';
+
+/* ************************************ */
+/* MISC  */
+
+.red {
+  color:              $col-brightred !important;
+}
+.yellow {
+  color:              $col-yellow !important;
+}
+.white {
+  color:              $col-white !important;
+}
+.greyback {
+  background-color:   $col-lightgrey;
+}
+.h2MarginB {
+  margin-bottom:      20px;
+}
+.separatorDotted {
+  border-top:         $dotted;
+  margin-top:         20px;
+  padding-top:        20px;
+}
+.padZero {
+  padding:            0;
+}
+.margZero {
+  margin:             0;
+}
+.sponsored {
+  padding:            3px 3px 3px 5px;
+  background-color:   $col-yellow;
+  color:              $col-black;
+  font-weight:        $font-bold;
+  font-size:          12px;
+  letter-spacing:     2px;
+}

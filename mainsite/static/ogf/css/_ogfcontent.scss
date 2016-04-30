@@ -1,0 +1,669 @@
+/* =================================================================== */
+/* MAIN CONTENT STYLES FOR OGF
+====================================================================== */
+@import 'vars';
+
+.content-area {
+  padding:                0 15px;
+}
+
+.page-content {
+  margin-top:             25px;
+}
+
+/* ********************************** */
+/* SUPER FEATURE & POPULAR NOW */
+.featurePop {
+  margin-top:             30px;
+}
+#superFeatured {
+  min-height:             500px;
+  -webkit-background-size:cover;
+  background-size:        cover;
+  text-align:             center;
+
+  h1, p {
+    color:              $col-white;
+  }
+}
+.featured {
+  padding:              0 20px 0 0;
+}
+.superFBack {
+  //border:1px solid white;
+  position:             absolute;
+  bottom:               0;
+  padding:              20px 15%;
+}
+#popularNow {
+  min-height:           500px;
+  background-color:     $col-ogfblack;
+  padding:              25px 30px;
+  color:                $col-white;
+
+  h2 {
+    font-size:          17px;
+    font-weight:        $font-bold;
+    padding-bottom:     10px;
+    border-bottom:      1px dotted $col-white;
+  }
+  .popTitle {
+    font-size:          15px;
+    font-weight:        $font-bold;
+    margin:             0;
+  }
+
+}
+.popList {
+  border-bottom:        1px dotted $col-white;
+}
+.popCat {
+  a {
+    color:              $col-ogfbluehover;
+    text-decoration:    none;
+    font-weight:        $font-bold;
+
+    &:hover {
+      color:            $col-ogfyellow;
+    }
+  }
+  i {
+    font-size:          20px;
+  }
+}
+.popCat2 {
+  a {
+    color:              $col-ogfyellow;
+    text-decoration:    none;
+    font-weight:        $font-bold;
+
+    &:hover {
+      color:            $col-ogfbluehover;
+    }
+  }
+  i {
+    font-size:          20px;
+  }
+}
+.popAuthorBox {
+  margin-top:           10px;
+
+  a {
+    color:              $col-ogfyellow;
+
+    &:hover {
+      color:            $col-ogfbluehover;
+      text-decoration:  none;
+    }
+  }
+
+}
+.authPic {
+  padding:              0;
+}
+.spacerBar {
+  padding:              0 15px;
+}
+
+
+
+/* ********************************** */
+/* ROW WITH SIDE BAR */
+.sideBarRow {
+  border-top:           $blockDivider;
+  margin-left:          0;
+  margin-right:         0;
+}
+.currentIssue, .newsletterBox {
+  min-width:            300px;
+}
+.regionBox {
+  background-color:     $col-ogflightgrey2;
+  padding:              0;
+  margin-bottom:        20px;
+}
+.cIssueThmb {
+  padding:              0 10px 0 0;
+  margin:               0 0 0 0;
+}
+
+.formBox {
+  background-color:     $col-ogflightgrey2;
+  padding:              20px;
+
+  input {
+    margin-bottom:      10px;
+  }
+}
+.sideAds {
+  margin:               20px 0;
+  padding:              20px 0 0 0;
+}
+.sideAd {
+  margin:               0 0 20px 0;
+  padding:              0;
+
+  img {
+    margin:             auto;
+  }
+}
+
+/* ********************************** */
+/* BUTTONS */
+.sqBtnRed, .sqBtnBlack {
+  color:                  $col-white;
+  margin-top:             10px;
+  margin-bottom:          10px;
+}
+.sqBtnRed {
+  background-color:       $col-ogfblue;
+}
+.sqBtnBlack {
+  background-color:       $col-ogfblack;
+}
+#btnSponsored {
+  color:                  $col-ogfblack;
+  background-color:       $col-sponsoryellow;
+}
+
+
+/* ********************************** */
+/* CHANNEL ROWS */
+.channelBlockRow {
+  border-top:             $blockDivider;
+  margin-top:             20px;
+}
+.channelsList {
+  padding:                0;
+  font-family:            $font-titles;
+  font-weight:            $font-bold;
+  font-size:              12px;
+
+  ul {
+    list-style:           none;
+    padding:              0;
+    border-top:           7px solid $col-ogfred;
+    background-color:     $col-ogflightgrey;
+
+    li {
+      padding:            10px 0 10px 10px;
+      border-bottom:      $dotted;
+
+      &:last-child {
+        border-bottom:    none;
+      }
+
+      &:hover {
+        color:            $col-ogfred;
+        background-color: $col-ogfnotsolightgrey;
+      }
+    }
+  }
+}
+.articleGroup {
+  div:nth-child(even) {
+
+  }
+}
+.articleBox {
+  border-bottom:        $dotted;
+  padding:              0 20px 15px 0;
+}
+.articleListItem {
+  border-bottom:        $dotted;
+  margin-bottom:        10px;
+
+  h4 {
+    padding-top:        0;
+    margin-top:         0;
+  }
+}
+.fboxTitle {
+  margin:               0;
+}
+.techFocusBox, .columnBox {
+  padding:              0 10px 0 0;
+}
+
+/* ********************************** */
+/* SPONSORED BLOCK */
+#sponsoredProfile {
+  min-height:             400px;
+  -webkit-background-size:cover;
+  background-size:        cover;
+  text-align:             center;
+
+  h1, p {
+    color:              $col-white;
+  }
+}
+.sponsoredFBack {
+  position:             absolute;
+  bottom:               0;
+  padding:              20px 15%;
+}
+
+
+.peopleFocus {
+  background-color:     $col-ogfnotsolightgrey;
+  padding:              15px;
+
+  img {
+    float:              left;
+    margin-right:       15px;
+  }
+
+}
+.personName {
+  font-family:          $font-titles;
+  font-size:            16px;
+  font-weight:          $font-bold;
+  padding-top:          10px;
+}
+.personDets {
+  font-size:            11px;
+}
+.boxTitleBig {
+  font-size:            20px;
+  padding-top:          20px !important;
+}
+
+#departmentsRow {
+  background-color:     $col-ogfred;
+  color:                $col-white;
+  margin-top:           20px;
+  padding:              3px 10px 0 0;
+
+  h3 {
+    font-size:          15px;
+    margin:             0;
+    padding:            5px;
+  }
+  a {color:             $col-white;}
+}
+#deptsTitle {
+  float:                left;
+  width:                60%;
+}
+#deptDownArrow {
+  float:                right;
+  width:                35%;
+  font-size:            20px;
+  cursor:               pointer;
+}
+#departmentsSlide {
+  background-color:     $col-ogfnotsolightgrey;
+  padding:              5px;
+}
+.departmentsList {
+  list-style-type:      none;
+  padding:              0;
+
+  li{
+    float:              left;
+    margin:             20px;
+
+    h3 {
+      font-size:        13px;
+      margin:           0;
+    }
+
+    a {
+      color:            $col-ogfblack;
+      text-decoration:  none;
+
+      &:hover {
+        color:          $col-white;
+      }
+    }
+  }
+}
+
+#latestArticlesList {
+  padding:              0;
+  margin:               0;
+}
+.latestArticleBlurb {
+  border-top:           $dotted;
+  margin:               20px 0 0 0;
+  padding:              20px 0 0 0;
+}
+
+.articleThumb {
+  margin:               0;
+  padding:              0 15px 0 0;
+}
+.articleDataLine {
+  border-top:           $dotted;
+  padding:              10px;
+}
+.articleData {
+  list-style-type: none;
+  padding:              0;
+  font-size:            12px;
+  font-weight:          $font-bold;
+
+  li {
+    float:              left;
+    margin:             5px;
+
+    a {
+      color:            $col-ogfred;
+      text-decoration:  none;
+
+      &:hover {
+        color:          $col-ogfblack;
+      }
+    }
+  }
+
+  .authorName {
+    color:              $col-ogfred;
+  }
+
+}
+
+.articleSocialShares {
+  border-top:           $dotted;
+  list-style-type:      none;
+  padding:              0;
+  font-size:            25px;
+  font-weight:          $font-bold;
+
+  li {
+    float:              left;
+    margin:             5px;
+
+    a {
+      text-decoration:  none;
+
+      &:hover {
+        color:          $col-ogfred;
+      }
+    }
+  }
+
+  .fbShare    {color:$col-fbShare;}
+  .twitShare  {color:$col-twitShare;}
+  .lInShare   {color:$col-lInShare;}
+  .emailShare {color:$col-ogfblack;}
+  .prntShare  {color:$col-ogfblack;}
+
+}
+
+.articleBody {
+  margin:               0;
+  padding:              25px 20px 0 0;
+}
+.articleMainImg {
+  padding:              0;
+  margin:               0;
+}
+.imgCaption {
+  font-size:            10px;
+  padding:              10px 0 0 0;
+  margin:               0;
+}
+.articleText {
+  padding-bottom:       30px;
+}
+.previewBlock {
+  background-color:     $col-ogfnotsolightgrey;
+
+  .gainAccessBtn {
+    background-color:   $col-ogfred;
+    margin:             20px auto 30px;
+    padding:            10px;
+    width:              60%;
+    color:              $col-white;
+  }
+}
+
+.floatLeftImg {
+  float:                left;
+  margin:               5px 20px 10px 0;
+  width:                50%;
+  height:               auto;
+}
+
+.floatRightImg {
+  float:                right;
+  margin:               5px 0 10px 20px;
+  width:                50%;
+  height:               auto;
+}
+.fullWidthImg {
+  width:                100%;
+  height:               auto;
+}
+.quote {
+  color:                $col-ogfred;
+
+  i {
+    color:              $col-ogfblack;
+  }
+}
+.relatedArticlesBlock {
+  border-top:           $blockDivider;
+  margin-top:           25px;
+  //background-color: hotpink;
+}
+.socialBottom {
+  margin-bottom:        30px;
+}
+.breadCrumbs {
+  list-style-type:      none;
+  padding:              0;
+  font-size:            12px;
+  //font-weight:$font-bold;
+
+  li {
+    float:              left;
+    margin:             5px;
+
+    a {
+      text-decoration:  none;
+      color:            $col-ogfred;
+
+      &:hover {
+        color:          $col-basegrey;
+      }
+    }
+  }
+}
+
+.prevYearBtn {
+  background-color:     $col-ogflightgrey;
+  margin:               20px 0;
+  padding:              20px;
+  font-size:            25px;
+  font-weight:          $font-bold;
+
+  a {
+    color:              $col-ogfbluehover;
+
+    &:hover {
+      color:            $col-ogfblue;
+      text-decoration:  none;
+    }
+  }
+}
+
+.featurecol, .editorialcol, .areaContent, .areaRightSide {
+  padding:              0;
+}
+.featurecol {
+  //overflow: hidden;
+}
+.areaContent {
+  padding-right:        15px;
+}
+.issuebar, .issueItem {
+  cursor:               pointer;
+  &:hover {
+    background-color:   $col-ogfnotsolightgrey;
+  }
+}
+.plusSymbol, .minusSymbol {
+  float:                right;
+  margin-right:         20px;
+}
+.issuebar .minusSymbol,
+.issuebar.collapsed .plusSymbol {
+    display: inline-block;
+}
+.issuebar.collapsed .minusSymbol,
+.issuebar .plusSymbol {
+    display: none;
+}
+
+.issueItem {
+  padding:              15px;
+
+  .issueLink {
+    color:              $col-ogfblack;
+    font-weight:        $font-bold;
+
+    .issueDate {
+      font-size:        15px;
+      margin:           5px 0 0 0;
+    }
+  }
+}
+.panel-default, .panel, .panel-collapse, .panel-group {
+  border:               none;
+}
+.dottedSpacer {
+    border-bottom:      1px dotted $col-ogfblack;
+  margin:               0 0 15px 0;
+}
+
+.articleDetail {
+  .articleTitle {
+    padding-bottom:     20px;
+  }
+  .articleAuthorBox, .articleShares {
+    min-height:         35px;
+    //margin-bottom:      15px;
+    padding-right:      0;
+    padding-left:       0;
+  }
+  .articleAuthorBox {
+    font-size:          12px;
+    font-weight:        $font-bold;
+    padding-top:        10px;
+  }
+  .sponsored {
+    margin:             0 0 15px 0 !important;
+  }
+}
+.articleTitleBox {
+
+}
+.articlePicture {
+  margin-bottom:        20px;
+}
+.articleBodyText {
+
+}
+.articleShares {
+  font-size:            18px;
+  padding-top:          5px;
+  .fa-facebook-square {
+    color:              $col-fbShare;
+  }
+  .fa-twitter-square {
+    color:              $col-twitShare;
+  }
+  .fa-linkedin-square {
+    color:              $col-lInShare;
+  }
+  .fa-envelope-square {
+    color:              $col-drkgrey;
+  }
+  .fa-plus-square {
+    color:              $col-drkgrey;
+  }
+  .fa-facebook-square, .fa-twitter-square, .fa-linkedin-square, .fa-envelope-square, .fa-plus-square {
+    cursor:             pointer;
+    padding:            3px;
+    &:hover {
+      color:            $col-white;
+      background-color: $col-hrblue;
+    }
+  }
+}
+
+.inLineBox {
+  background-color:     $col-ogflightgrey;
+  padding:              15px;
+  margin:               20px 0;
+
+  h3 {
+    padding:            0 0 15px 0;
+    margin:             0 0 15px 0;
+    border-bottom:      1px dotted $col-boxshadow;
+    font-size:          20px;
+    font-weight:        $font-bold;
+  }
+}
+
+table {
+  margin:               0 10px 10px 0;
+  border-color:         $col-ogflightgrey;
+
+  caption {
+    font-size:          12px;
+    padding:            5px;
+    background-color:   $col-ogflightgrey;
+  }
+  tbody {
+    border-color:       $col-ogflightgrey;
+  }
+  th {
+    background-color:   $col-ogfblue;
+    color:              $col-white;
+  }
+  th, td {
+    padding:            5px;
+  }
+}
+.topicListBox, .topicListColumnL, .topicListColumnR, .topicListColumnOne {
+  padding:              0 !important;
+}
+.topicListBox {
+  background-color:     $col-ogflightgrey;
+  border-top:           5px solid $col-red;
+
+  .topicListItem {
+    //border-bottom:      1px dotted $col-boxshadow;
+    //border-right:       1px dotted $col-boxshadow;
+    border:             1px dotted $col-boxshadow;
+    padding:            5px;
+
+    &:hover {
+      background-color: $col-ogfnotsolightgrey;
+    }
+
+    p {
+      margin:           0;
+    }
+
+  }
+}
+.topicListItem3 {
+  border:             1px dotted $col-boxshadow;
+  padding:            5px;
+  display:            inline-block;
+  width:32%;
+}
+//.topicListColumnL {
+//  .topicListItem {
+//    border-left:        1px dotted $col-boxshadow;
+//  }
+//}
+//.topicListColumnOne {
+//  .topicListItem {
+//    border:             1px dotted $col-boxshadow;
+//  }
+//}

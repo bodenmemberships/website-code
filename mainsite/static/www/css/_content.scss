@@ -1,0 +1,73 @@
+/* =================================================================== */
+/* CONTENT & BOXES
+====================================================================== */
+@import 'vars';
+
+.content-area {
+  margin-top:30px;
+}
+.section-heading {
+  display: block;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  color: $col-speblue2;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+.articleDetail {
+  .articleTitle {
+    padding-bottom:     20px;
+  }
+  .articleAuthorBox, .articleShares {
+    height:             35px;
+    border-bottom:      1px dotted $col-black;
+    margin-bottom:      15px;
+    padding-right:      0;
+    padding-left:       0;
+  }
+  .articleAuthorBox {
+    font-size:          12px;
+    font-weight:        $font-bold;
+    padding-top:        10px;
+  }
+  .sponsored {
+    margin:             0 0 15px 0 !important;
+  }
+}
+.articleTitleBox {
+
+}
+.articlePicture {
+  margin-bottom:        20px;
+}
+.articleBodyText {
+
+}
+.articleShares {
+  font-size:            18px;
+  padding-top:          5px;
+  .fa-facebook-square {
+    color:              $col-fbShare;
+  }
+  .fa-twitter-square {
+    color:              $col-twitShare;
+  }
+  .fa-linkedin-square {
+    color:              $col-lInShare;
+  }
+  .fa-envelope-square {
+    color:              $col-darkgrey;
+  }
+  .fa-plus-square {
+    color:              $col-darkgrey;
+  }
+  .fa-facebook-square, .fa-twitter-square, .fa-linkedin-square, .fa-envelope-square, .fa-plus-square {
+    cursor:             pointer;
+    padding:            3px;
+    &:hover {
+      color:            $col-white;
+      background-color: $col-darkgrey;
+    }
+  }
+}

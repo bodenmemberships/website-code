@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% for editorial in editorials %}
+    {% if forloop.first %}
+        <a href={{ link }}>
+        <div class="tile-editorial row" style="background-color:{{ backcol }}">
+            <div class="col-xs-12 title1">{{ editorial.title_main }}</div>
+            <div class="col-xs-12 dottedspacer">&nbsp;</div>
+            <div class="col-xs-12 title2">{{ editorial.title_sub }}</div>
+            <div class="col-xs-12 excerpt">{{ editorial.exerpt | safe }}</div>
+            <div class="col-xs-12 dottedspacer">&nbsp;</div>
+            <div class="col-xs-4 authorImg"><img class="img-responsive" src={{editorial.picture.url}}></div>
+            <div class="col-xs-8 authorBio">{{ editorial.author_bio | safe }}</div>
+        </div>
+        </a>
+    {% endif %}
+{% empty %}
+    <p class="well">{% trans "No editorial available" %}</p>
+{% endfor %}

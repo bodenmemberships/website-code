@@ -1,0 +1,142 @@
+/* =================================================================== */
+/* jpt HEADER & MENUS
+====================================================================== */
+@import 'vars';
+
+
+
+/* ********************************** */
+/* TOP BAR BLACK */
+#topbar {
+  background-color:     $col-brightred;
+  min-height:           50px;
+  color:                $col-white;
+  font-weight:          $font-bold;
+
+  .topbarcol {
+
+  }
+
+  .topbarmenuleft {
+    list-style-type:    none;
+    padding:            14px 0 0 0;
+    overflow:           hidden;
+    font-size:          14px;
+
+    li {
+      float:            left;
+    }
+
+    li a {
+      display:          block;
+      color:            $col-menuwhite;
+      text-align:       center;
+      padding:          0 15px;
+      text-decoration:  none;
+    }
+
+    li a:hover {
+      color:            $col-yellow;
+    }
+
+  }
+
+  .topbarmenuright {
+    float:              right;
+    font-size:          20px;
+    list-style-type:    none;
+    padding:            13px 0 0 0;
+    overflow:           hidden;
+
+    li {
+      float:            left;
+      margin-top:       -4px;
+    }
+
+    li a {
+      display:          block;
+      color:            $col-menuwhite;
+      text-align:       center;
+      padding:          0 10px;
+      text-decoration:  none;
+    }
+
+    li a:hover {
+      color:            $col-yellow;
+    }
+
+  }
+
+  #signin {
+    background-color:   $col-red;
+    height:             50px;
+    font-size:          14px;
+    text-align:         center;
+    padding:            14px 0 0 0;
+
+    a {
+      color:            $col-menuwhite;
+      text-decoration:  none;
+    }
+
+    &:hover {
+      background-color: $col-white;
+
+      a {
+        color:          $col-brightred;
+      }
+    }
+  }
+
+}
+
+/* ********************************** */
+/* LOGO MENU BAR GREY                 */
+#menubar {
+  background-color:     $col-blue;
+  min-height:           170px;
+
+  #mainLogo {
+    padding-top:        50px;
+
+    img {
+      max-width:        300px;
+      height:           auto;
+    }
+  }
+
+  .pubMenu {
+    list-style-type:    none;
+    margin:             0;
+    padding:            80px 0 0 0;
+    font-size:          18px;
+    float:              right;
+
+    li {
+      float:            left;
+      padding:          0 0 0 30px;
+    }
+
+    li a {
+      display:          block;
+      color:            $col-menuwhite;
+      text-align:       center;
+      text-decoration:  none;
+      font-weight:      $font-bold;
+    }
+
+    li a:hover {
+      color:            $col-yellow;
+    }
+  }
+}
+.searchIcon {
+  &:hover {
+    color:              $col-brightred;
+    cursor:             pointer;
+  }
+}
+.searchbar {
+  background-color:     $col-notsolightgrey;
+  padding:              3px 0;
+}
